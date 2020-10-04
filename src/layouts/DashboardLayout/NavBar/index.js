@@ -77,9 +77,11 @@ const useStyles = makeStyles(() => ({
     width: 256
   },
   desktopDrawer: {
+    marginTop:20,
     width: 256,
     top: 64,
-    height: 'calc(100% - 64px)'
+    height: 'calc(100% - 64px)',
+    backgroundColor:'#C4C4C4'
   },
   avatar: {
     

@@ -10,9 +10,13 @@ import {
 import Logo from '../../components/Logo';
 
 const useStyles = makeStyles(({
-  root: {},
+  root: {
+    height: 64,
+  },
   toolbar: {
-    height: 64
+   
+    marginLeft: 60,
+    
   }
 }));
 
@@ -28,6 +32,7 @@ const TopBar = ({ className, ...rest }) => {
       <Toolbar className={classes.toolbar}>
         <RouterLink to="/">
           <Logo />
+         
         </RouterLink>
       </Toolbar>
     </AppBar>

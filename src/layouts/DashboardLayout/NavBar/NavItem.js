@@ -10,6 +10,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   item: {
+    
     display: 'flex',
     paddingTop: 10,
     paddingLeft:30,
@@ -17,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
    
   },
   button: {
-    color: theme.palette.text.primary.dark,
-    ackgroundColor:'F0F0F0',
+    color: theme.palette.text.primary,
+    backgroundColor:'F0F0F0',
     fontWeight: theme.typography.fontWeightMedium,
     justifyContent: 'flex-start',
     letterSpacing: 0,
@@ -33,12 +34,12 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 'auto'
   },
   active: {
-    color: theme.palette.primary.main,
+    color: '#77E393',
     '& $title': {
       fontWeight: theme.typography.fontWeightMedium
     },
     '& $icon': {
-      color: theme.palette.primary.main
+      color: '#77E393',
     }
   }
 }));

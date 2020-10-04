@@ -18,7 +18,9 @@ import Logo from '../../components/Logo';
 
 
 const useStyles = makeStyles(() => ({
-  root: {},
+  root: {
+    height:80,
+  },
   avatar: {
     width: 60,
     height: 60

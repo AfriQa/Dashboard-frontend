@@ -17,7 +17,8 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    boxShadow:'   0px 4px 4px 4px rgba(0.25, 0, 0.25, 0.25)',
   },
   statsItem: {
     alignItems: 'center',

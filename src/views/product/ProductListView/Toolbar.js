@@ -14,12 +14,18 @@ import {
 import { Search as SearchIcon } from 'react-feather';
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    boxShadow:'   0px 4px rgba(0.25, 0, 0.25, 0.25)',
+  },
   importButton: {
     marginRight: theme.spacing(1)
   },
   exportButton: {
     marginRight: theme.spacing(1)
+  },
+  searchBar:{
+    maxWidth:'100%',
+    borderRadius:'20px', 
   }
 }));
 
@@ -51,7 +57,7 @@ const Toolbar = ({ className, ...rest }) => {
       <Box mt={3}>
         <Card>
           <CardContent>
-            <Box maxWidth={500}>
+            <Box className={classes.searchBar}>
               <TextField
                 fullWidth
                 InputProps={{
