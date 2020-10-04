@@ -2,7 +2,7 @@ import React from "react";
 import "./Styles.scss";
 
 import LOGO from "../../Assets/final-logo.png";
-export default function index() {
+export default function Header() {
   return (
     <header className="header">
       <div className="wrap">
