@@ -5,7 +5,7 @@ import { ThemeProvider } from "@material-ui/core";
 import GlobalStyles from "./Components/GlobalStyles/GlobalStyles";
 
 import "./Mixins/Charts"
-import theme from "./theme";
+import theme from "./Theme";
 import routes from "./routes";
 
 import "./default.scss";
