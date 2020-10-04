@@ -19,7 +19,8 @@
     "react-perfect-scrollbar": "^1.5.8",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "uuid": "^8.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -8,7 +8,7 @@ import "./Mixins/Charts"
 import theme from "./Theme";
 import routes from "./routes";
 
-import "./default.scss";
+
 
 const App = () => {
   const routing = useRoutes(routes);
