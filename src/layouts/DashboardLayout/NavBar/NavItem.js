@@ -10,17 +10,17 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   item: {
-    
+
     display: 'flex',
     paddingTop: 10,
-    paddingLeft:30,
+    paddingLeft: 30,
     paddingBottom: 0,
-   
+
   },
   button: {
     color: theme.palette.text.primary,
-    backgroundColor:'F0F0F0',
-    fontWeight: theme.typography.fontWeightMedium,
+    backgroundColor: 'F0F0F0',
+    fontWeight: 900,
     justifyContent: 'flex-start',
     letterSpacing: 0,
     padding: '10px 8px',
@@ -36,7 +36,11 @@ const useStyles = makeStyles((theme) => ({
   active: {
     color: '#77E393',
     '& $title': {
-      fontWeight: theme.typography.fontWeightMedium
+      border: 'none',
+      color: '#77E393',
+      fontWeight: '900',
+      textTransform: 'inherit',
+      borderRadius: '30px',
     },
     '& $icon': {
       color: '#77E393',

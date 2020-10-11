@@ -77,16 +77,22 @@ const useStyles = makeStyles(() => ({
     width: 256,
   },
   desktopDrawer: {
-    borderRadius:'15px',
-    marginTop:40,
+
+    marginTop: 40,
+    marginLeft: 10,
     width: 256,
     top: 64,
     // height: 'calc(100% - 64px)',
-    height:650,
-    backgroundColor:'#C4C4C4'
+    height: 650,
+    backgroundColor: 'white',
+
+
+    background: '#C4C4C4',
+    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
+    borderRadius: '18px',
   },
   avatar: {
-    
+
     cursor: 'pointer',
     width: 84,
     height: 84
@@ -149,8 +155,8 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           ))}
         </List>
       </Box>
-     
-     
+
+
     </Box>
   );
 
@@ -187,7 +193,7 @@ NavBar.propTypes = {
 };
 
 NavBar.defaultProps = {
-  onMobileClose: () => {},
+  onMobileClose: () => { },
   openMobile: false
 };
 
