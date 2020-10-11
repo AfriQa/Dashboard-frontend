@@ -1,0 +1,4 @@
+language: node_js
+scripts:
+  - echo "Building Dashboard!!!"
+  - yarn build

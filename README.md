@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.org/AfriQa/Dashboard-frontend.svg?branch=main)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
