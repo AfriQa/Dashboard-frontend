@@ -15,17 +15,17 @@ import { Search as SearchIcon } from 'react-feather';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    boxShadow:'   0px 4px rgba(0.25, 0, 0.25, 0.25)',
+    boxShadow:' 0px 4px rgba(0.25, 0, 0.25, 0.25)',
   },
-  importButton: {
-    marginRight: theme.spacing(1)
-  },
-  exportButton: {
-    marginRight: theme.spacing(1)
+  Button: {
+    marginRight: theme.spacing(1),
+    borderRadius:'30px', 
   },
   searchBar:{
     maxWidth:'100%',
-    borderRadius:'20px', 
+    borderRadius:30, 
+    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))'
+
   }
 }));
 
@@ -41,13 +41,14 @@ const Toolbar = ({ className, ...rest }) => {
         display="flex"
         justifyContent="flex-end"
       >
-        <Button className={classes.importButton}>
+        <Button className={classes.Button}>
           Import
         </Button>
-        <Button className={classes.exportButton}>
+        <Button className={classes.Button}>
           Export
         </Button>
         <Button
+        className={classes.Button}
           color="primary"
           variant="contained"
         >
@@ -55,16 +56,16 @@ const Toolbar = ({ className, ...rest }) => {
         </Button>
       </Box>
       <Box mt={3}>
-        <Card>
+        <Card  className={classes.searchBar}> 
           <CardContent>
-            <Box className={classes.searchBar}>
+           
               <TextField
                 fullWidth
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
                       <SvgIcon
-                        fontSize="small"
+                        fontSize="large"
                         color="action"
                       >
                         <SearchIcon />
@@ -75,7 +76,7 @@ const Toolbar = ({ className, ...rest }) => {
                 placeholder="Search customer"
                 variant="outlined"
               />
-            </Box>
+            
           </CardContent>
         </Card>
       </Box>

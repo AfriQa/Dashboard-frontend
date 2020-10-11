@@ -20,7 +20,8 @@ import {
 import getInitials from "../../utils/getInitials";
 const useStyles = makeStyles((theme) => ({
   root: {
-    boxShadow:' 6px 4px 9px 4px rgba(0.25, 0.25, 0.25, 0.25)',
+    borderRadius:30, 
+    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))'
   },
   avatar: {
     marginRight: theme.spacing(2),

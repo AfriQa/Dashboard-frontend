@@ -31,7 +31,8 @@ const states = [
 const useStyles = makeStyles(() => ({
   root: {
 
-      boxShadow:' 4px 4px 4px 4px rgba(0.25, 0, 0.25, 0.25)',
+    borderRadius: '118px',
+    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
   
   }
 }));

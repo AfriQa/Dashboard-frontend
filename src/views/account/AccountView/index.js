@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'F0F0F0',
     minHeight: '100%',
     paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3),
+    paddingTop: theme.spacing(5),
     
   }
 }));

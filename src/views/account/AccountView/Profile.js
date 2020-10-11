@@ -25,12 +25,14 @@ const user = {
 
 const useStyles = makeStyles(() => ({
   root: {
-    boxShadow:' 4px 4px 4px 4px rgba(0.25, 0, 0.25, 0.25)',  },
+    borderRadius: '18px',
+    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
+   },
   avatar: {
     margin:20,
     height: 100,
     width: 100,
-    boxShadow:' 0px 4px 4px rgba(0, 0, 0, 0.25)',
+    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
   }
 }));
 
