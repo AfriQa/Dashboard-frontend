@@ -15,7 +15,8 @@ const useStyles = makeStyles(({
   },
   toolbar: {
    
-    marginLeft: 60,
+    marginLeft: 90,
+    marginTop:60,
     
   }
 }));
@@ -34,7 +35,9 @@ const TopBar = ({ className, ...rest }) => {
           <Logo />
          
         </RouterLink>
+       
       </Toolbar>
+     
     </AppBar>
   );
 };

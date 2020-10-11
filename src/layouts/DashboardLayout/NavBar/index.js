@@ -74,13 +74,15 @@ const items = [
 
 const useStyles = makeStyles(() => ({
   mobileDrawer: {
-    width: 256
+    width: 256,
   },
   desktopDrawer: {
-    marginTop:20,
+    borderRadius:'15px',
+    marginTop:40,
     width: 256,
     top: 64,
-    height: 'calc(100% - 64px)',
+    // height: 'calc(100% - 64px)',
+    height:650,
     backgroundColor:'#C4C4C4'
   },
   avatar: {
@@ -147,15 +149,8 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           ))}
         </List>
       </Box>
-      <Box flexGrow={1} />
-      <Box
-        p={2}
-        m={2}
-        bgcolor="background.dark"
-      >
      
-  
-      </Box>
+     
     </Box>
   );
 
