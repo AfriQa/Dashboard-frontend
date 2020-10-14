@@ -16,16 +16,18 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    marginTop: 10,
     display: 'flex',
     flexDirection: 'column',
-    boxShadow:'   0px 4px 4px 4px rgba(0.25, 0, 0.25, 0.25)',
+    borderRadius: '15px',
+    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))'
   },
   statsItem: {
     alignItems: 'center',
     display: 'flex'
   },
   statsIcon: {
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(2)
   }
 }));
 
