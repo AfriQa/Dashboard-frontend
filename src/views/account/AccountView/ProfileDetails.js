@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import {
   Box,
   Button,
@@ -30,10 +29,8 @@ const states = [
 
 const useStyles = makeStyles(() => ({
   root: {
-
     borderRadius: '118px',
-    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
-  
+    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))'
   }
 }));
 
@@ -45,7 +42,8 @@ const ProfileDetails = ({ className, ...rest }) => {
     email: 'demo@devias.io',
     phone: '',
     state: 'Alabama',
-    country: 'USA'
+    country: 'USA',
+    shopname: 'some shop name '
   });
 
   const handleChange = (event) => {
@@ -64,7 +62,7 @@ const ProfileDetails = ({ className, ...rest }) => {
     >
       <Card>
         <CardHeader
-          subheader="The information can be edited"
+          subheader="Update your Information"
           title="Profile"
         />
         <Divider />
@@ -175,7 +173,56 @@ const ProfileDetails = ({ className, ...rest }) => {
                 ))}
               </TextField>
             </Grid>
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                fullWidth
+                label="Shop Category"
+                name="Shop Category"
+                onChange={handleChange}
+                required
+                select
+                SelectProps={{ native: true }}
+                value={values.state}
+                variant="outlined"
+              >
+                {states.map((option) => (
+                  <option
+                    key={option.value}
+                    value={option.value}
+                  >
+                    {option.label}
+                  </option>
+                ))}
+              </TextField>
+            </Grid>
+
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                fullWidth
+                label="Shop Name"
+                name="Shop Name "
+                onChange={handleChange}
+                required
+                value={values.shopname}
+                variant="outlined"
+              />
+            </Grid>
+
+
+
           </Grid>
+
+
+
+
         </CardContent>
         <Divider />
         <Box
@@ -187,16 +234,12 @@ const ProfileDetails = ({ className, ...rest }) => {
             color="primary"
             variant="contained"
           >
-            Save details
+            Update details
           </Button>
         </Box>
       </Card>
     </form>
   );
-};
-
-ProfileDetails.propTypes = {
-  className: PropTypes.string
 };
 
 export default ProfileDetails;

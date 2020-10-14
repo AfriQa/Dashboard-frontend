@@ -16,10 +16,13 @@ import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
 
 const useStyles = makeStyles(() => ({
   root: {
-    height: '100%'
+    height: '100%',
+    borderRadius: '15px',
+    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))'
   },
   avatar: {
     backgroundColor: colors.orange[600],
+    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
     height: 56,
     width: 56
   }
