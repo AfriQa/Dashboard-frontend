@@ -123,8 +123,5 @@ const LatestProducts = ({ className, ...rest }) => {
   );
 };
 
-LatestProducts.propTypes = {
-  className: PropTypes.string
-};
 
 export default LatestProducts;

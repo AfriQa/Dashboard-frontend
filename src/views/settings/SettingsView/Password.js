@@ -13,7 +13,10 @@ import {
 } from '@material-ui/core';
 
 const useStyles = makeStyles(({
-  root: {}
+  root: {
+    borderRadius:30, 
+    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))'
+  }
 }));
 
 const Password = ({ className, ...rest }) => {
@@ -81,8 +84,5 @@ const Password = ({ className, ...rest }) => {
   );
 };
 
-Password.propTypes = {
-  className: PropTypes.string
-};
 
 export default Password;
