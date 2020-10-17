@@ -36,7 +36,7 @@ const Password = ({ className, ...rest }) => {
         <CardContent>
           <TextField
             onChange={handleChange}
-            value={values.password}
+            //  value={values.password}
             id="standard-full-width"
             style={{ margin: 10 }}
             placeholder=" Current Password "
@@ -48,24 +48,26 @@ const Password = ({ className, ...rest }) => {
           <TextField
 
             onChange={handleChange}
-            value={values.password}
+            // value={values.password}
             id="standard-full-width"
             style={{ margin: 8 }}
             placeholder=" New Password "
             helperText="New Password "
             fullWidth
+            type="password"
             color="secondary"
           />
 
 
           <TextField
             onChange={handleChange}
-            value={values.password}
+            //  value={values.password}
             id="standard-full-width"
             style={{ margin: 8 }}
             placeholder="Confirm Password "
             helperText="Confirm New Password "
             fullWidth
+            type="password"
             color="secondary"
           />
         </CardContent>
