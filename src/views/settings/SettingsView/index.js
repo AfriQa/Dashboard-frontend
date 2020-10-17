@@ -8,6 +8,7 @@ import Page from '../../../components/Page';
 
 import Notifications from './Notifications';
 import Password from './Password';
+import './settings.scss'
 
 const useStyles = makeStyles((theme) => ({
   root: {

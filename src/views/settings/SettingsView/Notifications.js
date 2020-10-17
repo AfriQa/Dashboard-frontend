@@ -10,7 +10,7 @@ import {
   FormControlLabel,
   Grid,
   Typography,
-  
+
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
@@ -24,7 +24,7 @@ const GreenCheckbox = withStyles({
     },
   },
   checked: {},
-})((props, theme) => <Checkbox color="default" {...props} />);
+})((props) => <Checkbox color="default" {...props} />);
 
 
 const Notifications = ({ className, ...rest }) => {
@@ -72,12 +72,10 @@ const Notifications = ({ className, ...rest }) => {
         </CardContent>
         <Divider />
         <Box
-          display="flex"
-          justifyContent="flex-end"
+          className="box"
           p={2}
         >
           <Button
-          className="saveButton"
             color="secondary"
             variant="contained"
           >
