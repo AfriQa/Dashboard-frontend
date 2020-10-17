@@ -8,7 +8,7 @@ import {
   Divider,
   TextField,
 } from '@material-ui/core';
-import './settings.scss'
+import './settings.css'
 
 const Password = ({ className, ...rest }) => {
   const [values, setValues] = useState({

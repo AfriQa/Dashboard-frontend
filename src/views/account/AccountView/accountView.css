@@ -1,0 +1,21 @@
+.profileDetailsRoot{
+    border-radius: 50px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
+
+}
+.inputfeilds{
+    margin: 10px;
+}
+.submitButton{
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.submitButton Button {
+    border-radius: 50px;
+    text-decoration: #ffffff;
+}
+
+.form{
+    border-radius: 50px;
+}

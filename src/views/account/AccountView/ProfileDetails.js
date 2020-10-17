@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import clsx from 'clsx';
 import {
   Box,
   Button,
@@ -8,10 +7,9 @@ import {
   CardHeader,
   Divider,
   Grid,
-  TextField,
-  makeStyles
+  TextField
 } from '@material-ui/core';
-
+import "./accountView.css";
 const states = [
   {
     value: 'alabama',
@@ -27,20 +25,13 @@ const states = [
   }
 ];
 
-const useStyles = makeStyles(() => ({
-  root: {
-    borderRadius: '118px',
-    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))'
-  }
-}));
 
-const ProfileDetails = ({ className, ...rest }) => {
-  const classes = useStyles();
+const ProfileDetails = ({ ...rest }) => {
   const [values, setValues] = useState({
     firstName: 'Katarina',
     lastName: 'Smith',
     email: 'demo@devias.io',
-    phone: '',
+    phone: '0900 00 00 00',
     state: 'Alabama',
     country: 'USA',
     shopname: 'some shop name '
@@ -56,9 +47,7 @@ const ProfileDetails = ({ className, ...rest }) => {
   return (
     <form
       autoComplete="off"
-      noValidate
-      className={clsx(classes.root, className)}
-      {...rest}
+      className="profileDetailsRoot"
     >
       <Card>
         <CardHeader
@@ -72,19 +61,19 @@ const ProfileDetails = ({ className, ...rest }) => {
             spacing={3}
           >
             <Grid
+              className="inputfeilds"
               item
               md={6}
               xs={12}
             >
               <TextField
-                fullWidth
-                helperText="Please specify the first name"
-                label="First name"
-                name="firstName"
                 onChange={handleChange}
+                style={{ margin: 10 }}
+                placeholder={values.firstName}
+                helperText="specify the first name"
+                color="secondary"
                 required
-                value={values.firstName}
-                variant="outlined"
+                fullWidth
               />
             </Grid>
             <Grid
@@ -93,13 +82,13 @@ const ProfileDetails = ({ className, ...rest }) => {
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Last name"
-                name="lastName"
                 onChange={handleChange}
+                style={{ margin: 10 }}
+                placeholder={values.lastName}
+                helperText="specify Your last name"
+                fullWidth
+                color="secondary"
                 required
-                value={values.lastName}
-                variant="outlined"
               />
             </Grid>
             <Grid
@@ -108,13 +97,13 @@ const ProfileDetails = ({ className, ...rest }) => {
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Email Address"
-                name="email"
                 onChange={handleChange}
+                style={{ margin: 10 }}
+                placeholder={values.email}
+                helperText="Email Adress"
+                fullWidth
+                color="secondary"
                 required
-                value={values.email}
-                variant="outlined"
               />
             </Grid>
             <Grid
@@ -123,28 +112,13 @@ const ProfileDetails = ({ className, ...rest }) => {
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Phone Number"
-                name="phone"
                 onChange={handleChange}
-                type="number"
-                value={values.phone}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
+                style={{ margin: 10 }}
+                placeholder={values.phone}
+                helperText="Phone Number"
                 fullWidth
-                label="Country"
-                name="country"
-                onChange={handleChange}
+                color="secondary"
                 required
-                value={values.country}
-                variant="outlined"
               />
             </Grid>
             <Grid
@@ -153,15 +127,31 @@ const ProfileDetails = ({ className, ...rest }) => {
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Select State"
-                name="state"
                 onChange={handleChange}
+                style={{ margin: 10 }}
+                placeholder={values.country}
+                helperText="Country"
+                fullWidth
+                color="secondary"
+                required
+              />
+            </Grid>
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                onChange={handleChange}
+                style={{ margin: 10 }}
+                placeholder={values.state}
+                helperText="City "
+                fullWidth
+                color="secondary"
                 required
                 select
                 SelectProps={{ native: true }}
                 value={values.state}
-                variant="outlined"
               >
                 {states.map((option) => (
                   <option
@@ -179,15 +169,16 @@ const ProfileDetails = ({ className, ...rest }) => {
               xs={12}
             >
               <TextField
+                style={{ margin: 10 }}
+                placeholder={values.state}
+                helperText="Shop Category "
                 fullWidth
-                label="Shop Category"
-                name="Shop Category"
-                onChange={handleChange}
-                required
                 select
+                color="secondary"
+                required
+                onChange={handleChange}
                 SelectProps={{ native: true }}
                 value={values.state}
-                variant="outlined"
               >
                 {states.map((option) => (
                   <option
@@ -199,39 +190,30 @@ const ProfileDetails = ({ className, ...rest }) => {
                 ))}
               </TextField>
             </Grid>
-
             <Grid
               item
               md={6}
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Shop Name"
-                name="Shop Name "
                 onChange={handleChange}
+                style={{ margin: 10 }}
+                placeholder="Shop Name "
+                helperText="Shop Name"
+                fullWidth
+                color="secondary"
                 required
-                value={values.shopname}
-                variant="outlined"
+                onChange={handleChange}
               />
             </Grid>
-
-
-
           </Grid>
-
-
-
-
         </CardContent>
         <Divider />
         <Box
-          display="flex"
-          justifyContent="flex-end"
-          p={2}
+          className="submitButton"
         >
           <Button
-            color="primary"
+            color="secondary"
             variant="contained"
           >
             Update details

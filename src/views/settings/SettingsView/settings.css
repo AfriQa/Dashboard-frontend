@@ -7,16 +7,15 @@
 .checkBox {
     margin: 50
   }
-  .savebutton{
-      border-radius: 30px
-  }
   .box{
     display: flex;
     justify-content: flex-end;
+    padding: 20px;
   }
-  .inputfield{
-      margin: 80px;
+  .box Button {
+    border-radius: 50px;
   }
+ 
   .indexRoot{
     background-color: #F4F6F8;
     min-height: '100%';

@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
-import './settings.scss'
+import './settings.css'
 
 const GreenCheckbox = withStyles({
   root: {
@@ -71,10 +71,7 @@ const Notifications = ({ className, ...rest }) => {
           </Grid>
         </CardContent>
         <Divider />
-        <Box
-          className="box"
-          p={2}
-        >
+        <Box className="box">
           <Button
             color="secondary"
             variant="contained"

@@ -13,7 +13,7 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-
+import "./accountView.css";
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
   city: 'Los Angeles',
