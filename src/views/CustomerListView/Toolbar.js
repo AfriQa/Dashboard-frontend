@@ -11,7 +11,7 @@ import "./customer.css";
 
 const Toolbar = () => {
   return (
-    <div  >
+    <div>
       <Box className="box"
         display="flex"
         justifyContent="flex-end"
@@ -45,10 +45,8 @@ const Toolbar = () => {
           placeholder="Search customer"
           variant="outlined"
         />
-
       </div>
     </div>
-
   );
 };
 
