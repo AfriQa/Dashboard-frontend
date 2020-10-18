@@ -3,28 +3,29 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import {
-  Avatar,
-  Box,
-  Card,
-  Checkbox,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TablePagination,
-  TableRow,
-  Typography,
-  makeStyles
-} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import TablePagination from '@material-ui/core/TablePagination';
+import Card from '@material-ui/core/Card';
+import Checkbox from '@material-ui/core/Checkbox';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 import getInitials from "../../utils/getInitials";
+
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    borderRadius:30, 
+    borderRadius:25, 
     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))'
   },
   avatar: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(1),
 
 
   }
@@ -82,14 +83,14 @@ const Results = ({ className, customers, ...rest }) => {
       {...rest}
     >
       <PerfectScrollbar>
-        <Box minWidth={1050}>
+        <Box minWidth={105}>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell padding="checkbox">
                   <Checkbox
                     checked={selectedCustomerIds.length === customers.length}
-                    color="primary"
+                    color="secondary"
                     indeterminate={
                       selectedCustomerIds.length > 0
                       && selectedCustomerIds.length < customers.length
