@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import {makeStyles} from '@material-ui/core/';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -18,21 +15,7 @@ import TableRow from '@material-ui/core/TableRow';
 import getInitials from "../../utils/getInitials";
 
 
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    borderRadius:25, 
-    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))'
-  },
-  avatar: {
-    marginRight: theme.spacing(1),
-
-
-  }
-}));
-
-const Results = ({ className, customers, ...rest }) => {
-  const classes = useStyles();
+const Results = ({ customers}) => {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
@@ -78,13 +61,9 @@ const Results = ({ className, customers, ...rest }) => {
   };
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className="resultsRoot">
       <PerfectScrollbar>
-        <Box minWidth={105}>
-          <Table>
+          <Table className="table">
             <TableHead>
               <TableRow>
                 <TableCell padding="checkbox">
@@ -130,12 +109,9 @@ const Results = ({ className, customers, ...rest }) => {
                     />
                   </TableCell>
                   <TableCell>
-                    <Box
-                      alignItems="center"
-                      display="flex"
-                    >
+                    <Box className="tableBox">
                       <Avatar
-                        className={classes.avatar}
+                        className="avatar"
                         src={customer.avatarUrl}
                       >
                         {getInitials(customer.name)}
@@ -164,7 +140,7 @@ const Results = ({ className, customers, ...rest }) => {
               ))}
             </TableBody>
           </Table>
-        </Box>
+       
       </PerfectScrollbar>
       <TablePagination
         component="div"
