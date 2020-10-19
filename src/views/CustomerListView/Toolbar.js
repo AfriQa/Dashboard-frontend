@@ -1,11 +1,10 @@
 import React from 'react';
-import {
-  Box,
-  Button,
-  TextField,
-  InputAdornment,
-  SvgIcon
-} from '@material-ui/core';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import TextField from '@material-ui/core/TextField';
+import Box from '@material-ui/core/Box';
+import SvgIcon from '@material-ui/core/SvgIcon';
+import Button from '@material-ui/core/Button';
+
 import { Search as SearchIcon } from 'react-feather';
 import "./customer.css";
 

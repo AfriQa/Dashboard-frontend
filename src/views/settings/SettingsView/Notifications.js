@@ -24,7 +24,7 @@ const GreenCheckbox = withStyles({
 })((props) => <Checkbox color="default" {...props} />);
 
 
-const Notifications = ({ className, ...rest }) => {
+const Notifications = () => {
   return (
     <form>
       <Card className="root">
