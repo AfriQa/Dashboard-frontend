@@ -24,3 +24,10 @@
    align-items: center;
   display : flex
   }
+  
+  .indexRoot{
+    background-color: #F4F6F8;
+    min-height: 100%;
+    padding-bottom: 30px;
+    padding-top: 50px
+}
