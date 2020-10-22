@@ -1,104 +1,76 @@
 import React from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
-import { Formik } from 'formik';
-import {
-    Box,
-    Button,
-    Container,
-    Grid,
-    Link,
-    TextField,
-    Typography,
-    makeStyles
-} from '@material-ui/core';
-
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import IconButton from '@material-ui/core/IconButton';
 import FacebookIcon from '../../icons/Facebook'
 import GoogleIcon from '../../icons/Google';
+import TwitterIcon from '@material-ui/icons/Twitter';
 import Page from "../../components/Page"
 import Image from "../../images/bagLogo.jpg";
-import LogoImg from "../../images/AfriLogo.svg"
-
-
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        // backgroundColor: theme.palette.background.dark,
-        // height: '100%',
-        // paddingBottom: theme.spacing(3),
-        // paddingTop: theme.spacing(3)
-    },
-
-}));
+import Divider from '@material-ui/core/Divider';
+import './logIn.css'
 
 const LoginView = () => {
-    const classes = useStyles();
-    const navigate = useNavigate();
+
 
     return (
-        <Page
-            //   className={classes.root}
-            title="Login"
-        >
-            <div>
-                <Grid container style={{ minHeight: '100vh' }}>
-                    <Grid item xs={12} sm={6}>
+        <Page title="Login" >
+            <div className="everything">
+                <Grid container style={{ minHeight: '10vh' }}>
+                    <Grid alignContent="center" item xs={12} sm={6}>
 
-                        <img src={Image}
-                            style={{
-                                width: '100%',
-                                height: '70%',
-                                objectFit: 'cover'
-                            }} alt="liginImage" />
+                        <img src={Image} className="bagImage" alt="liginImage" />
+                        <div className="afriName">   Afri - Eqa</div>
                     </Grid>
 
                     <Grid container item xs={12} sm={6}
-                        alignContent="center" direction="column"
-                        justify="space-between"
-                        style={{
-                            padding: 10
-                        }}>
+                        alignContent="center"
+                        direction="column"
+                        justify="flex-start"
+                        className="randOne"
+                    >
                         <div />
-                        <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            maxWidth: 400,
-                            minWidth: 300
-                        }}>
+                        <div className="formContainer" >
                             <Grid container justify="center">
-                                {/* <img src={LogoImg} width={100} /> */}
-                                <h1 style={{
-                                    fontSize: '120px',
-                                    fontFamily: 'Open Sans',
-                                    fontWeight: '200',
-                                    marginTop: '0px',
-                                    marginBottom: '60px',
-                                    left: '615px',
-                                    top: '49px',
-                                }}>sign in</h1>
-                                <h2 style={{
-                                    fontFamily: 'Open Sans',
-                                    fontWeight: '300',
-                                    fontSize: '21px',
-                                    lineHeight: '29px',
-                                    textAlign: 'center',
-                                }} > use your phone number to log in or create a new account </h2>
+
+                                <h1 className="signHeader">sign in</h1>
+                                <h2 className="infotext" > use your phone number to log in or create a new account </h2>
                             </Grid>
-                            <TextField color="secondary" label="Phone Number " margin="normal" />
-                            <div style={{ height: 20 }} />
-                            <Button style={{borderRadius:'20px'}} color="secondary"  variant="contained">
+                            <div style={{ height: 30 }} />
+                            <TextField color="secondary" variant="filled" label="Phone Number " style={{
+                                borderRadius: '20px'
+                            }} />
+                            <div style={{ height: 40 }} />
+                            <Button style={{ borderRadius: '20px' }} color="secondary" variant="contained">
                                 login
                             </Button>
-                            <div style={{ height: 20 }} />
-                            {/* <button> learn more</button> */}
+                            <div style={{ height: 40 }} />
+
+
+                            <h2 color="secondary" className="infotext" style={{
+                               
+                            }} > or login using  </h2>
+                            <div style={{ height: 30 }} />
+
+                            <Divider />
+
+                            <Grid align="center" justify="space-between" >
+                                <IconButton color="secondary" >
+                                    <TwitterIcon />
+                                </IconButton>
+                                <IconButton color="secondary" >
+                                    <GoogleIcon />
+                                </IconButton>
+                                <IconButton color="secondary" >
+                                    <FacebookIcon />
+                                </IconButton>
+                            </Grid>
                         </div>
                         <div />
                         <div />
                     </Grid>
                 </Grid>
-
-
-
             </div>
         </Page>
     );
