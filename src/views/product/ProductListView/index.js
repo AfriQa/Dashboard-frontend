@@ -1,36 +1,24 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Container,
-  Grid,
-  makeStyles
-} from '@material-ui/core';
+
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 import { Pagination } from '@material-ui/lab';
 import Page from '../../../components/Page';
 
 import Toolbar from './Toolbar';
 import ProductCard from './ProductCard';
 import data from './data';
+import './products.css'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.dark,
-    minHeight: '100%',
-    paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(5)
-  },
-  productCard: {
-    height: '100%'
-  }
-}));
+
 
 const ProductList = () => {
-  const classes = useStyles();
   const [products] = useState(data);
 
   return (
     <Page
-      className={classes.root}
+      className="indexRoot"
       title="Products"
     >
       <Container maxWidth={false}>
@@ -49,7 +37,7 @@ const ProductList = () => {
                 xs={12}
               >
                 <ProductCard
-                  className={classes.productCard}
+                  className="productCard"
                   product={product}
                 />
               </Grid>

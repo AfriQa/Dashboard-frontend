@@ -203,7 +203,6 @@ const ProfileDetails = ({ ...rest }) => {
                 fullWidth
                 color="secondary"
                 required
-                onChange={handleChange}
               />
             </Grid>
           </Grid>

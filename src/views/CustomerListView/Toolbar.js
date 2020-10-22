@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 
 import { Search as SearchIcon } from 'react-feather';
 import "./customer.css";
-
+import AddCustomer from './addCustomer'
 const Toolbar = () => {
   return (
     <div>
@@ -21,9 +21,8 @@ const Toolbar = () => {
         <Button >
           Export
         </Button>
-        <Button color="secondary" variant="contained" >
-          Add customer
-        </Button>
+        <AddCustomer/>
+        
       </Box>
       <div className="searchBar" >
         <TextField

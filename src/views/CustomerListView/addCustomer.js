@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -8,10 +7,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
 import { DropzoneArea } from 'material-ui-dropzone';
-import Checkbox from '@material-ui/core/Checkbox';
-import "./products.css"
+import "./customer.css"
 
-function Addproduct() {
+function AddCustomer() {
 
     const [open, setOpen] = React.useState(false);
 
@@ -27,7 +25,7 @@ function Addproduct() {
     return (
         <div>
             <Dialog size="large" open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Add the details of the product</DialogTitle>
+                <DialogTitle id="form-dialog-title">Add details of A customer </DialogTitle>
                 <DialogContent>
                     <Grid
                         container
@@ -36,13 +34,13 @@ function Addproduct() {
                         <Grid
                             className="inputfeilds"
                             item
-                            md={8}
+                            md={6}
                             xs={12}
                         >
                             <TextField
                                 style={{ margin: 10 }}
-                                placeholder="Name of the Product "
-                                helperText="Name of the Product "
+                                placeholder="First Name"
+                                helperText="First Name "
                                 color="secondary"
                                 required
                                 fullWidth
@@ -50,47 +48,44 @@ function Addproduct() {
                         </Grid>
                         <Grid
                             item
-                            md={3}
+                            md={6}
                             xs={12}
                         >
                             <TextField
+                                type="text"
+                                style={{ margin: 10 }}
+                                placeholder="Last Name"
+                                helperText="Last Name"
+                                fullWidth
+                                color="secondary"
+                                required
+                            />
+                        </Grid>
+                        <Grid
+                            item
+                            md={6}
+                            xs={12}
+                        >
+                            <TextField
+                                style={{ margin: 10 }}
+                                type="email"
+                                helperText="Email"
+                                color="secondary"
+                                placeholder="E-mail "
+                            />
+
+                        </Grid>
+                        <Grid
+                            item
+                            md={6}
+                            xs={12}
+                        >
+                            <TextField
+                                style={{ margin: 10 }}
                                 type="number"
-                                style={{ margin: 10 }}
-                                placeholder="Ammount in stock"
-                                helperText="Ammount in stock"
-                                fullWidth
+                                helperText="Phone Number "
                                 color="secondary"
-                                required
-                            />
-                        </Grid>
-                        <Grid
-                            item
-                            md={6}
-                            xs={12}
-                        >
-                            <TextField
-                                style={{ margin: 10 }}
-                                helperText="Product Descripition"
-                                multiline
-                                color="secondary"
-                                rows={4}
-                                placeholder="write a berif description of the product "
-
-                            />
-
-                        </Grid>
-                        <Grid
-                            item
-                            md={6}
-                            xs={12}
-                        >
-                            <TextField
-                                style={{ margin: 10 }}
-                                helperText="Item tags "
-                                multiline
-                                color="secondary"
-                                rows={4}
-                                placeholder="item to appeer while searched for ...."
+                                placeholder="Phone Number "
                             />
                         </Grid>
                         <Grid
@@ -101,12 +96,12 @@ function Addproduct() {
                             <TextField
                                 // onChange={handleChange}
                                 style={{ margin: 10 }}
-                                placeholder="item price"
-                                helperText="Price in Birr "
+                                placeholder="Location"
+                                helperText="Location "
                                 fullWidth
                                 color="secondary"
                                 required
-                                type="number"
+                                type="location"
                             >
                             </TextField>
                         </Grid>
@@ -118,11 +113,11 @@ function Addproduct() {
                             <TextField
                                 // onChange={handleChange}
                                 style={{ margin: 10 }}
-                                placeholder="Discounted price"
-                                helperText="Discount Price in Birr"
+                                placeholder="Regestration Date"
+                                helperText="Regestration Date"
                                 fullWidth
                                 color="secondary"
-                                type="number"
+                                type="date"
                             >
                             </TextField>
                         </Grid>
@@ -134,8 +129,8 @@ function Addproduct() {
                             <TextField
                                 // onChange={handleChange}
                                 style={{ margin: 10 }}
-                                placeholder="unit Weight "
-                                helperText="Unit Weight  "
+                                placeholder="Number of items Purchased  "
+                                helperText="Number of items Purchased   "
                                 fullWidth
                                 color="secondary"
                                 required
@@ -149,61 +144,16 @@ function Addproduct() {
                             xs={12}
                         >
                             <TextField
+                                // onChange={handleChange}
                                 style={{ margin: 10 }}
-                                helperText="Item Category "
+                                placeholder="Toatal Money Spent   "
+                                helperText="Toatal Money Spent    "
                                 fullWidth
-                                select
                                 color="secondary"
                                 required
-                                // onChange={handleChange}
-                                SelectProps={{ native: true }}
-
+                                type="number"
                             >
-                                <option>category one </option>
-                                <option>another category </option>
                             </TextField>
-                        </Grid>
-                        <Grid
-                            item
-                            md={6}
-                            xs={12}
-                        >
-                            <TextField
-                                style={{ margin: 10 }}
-                                helperText="Size variants "
-                                multiline
-                                color="secondary"
-                                rows={3}
-                                placeholder=" Enter size variants separeted by a comma "
-                            />
-                        </Grid>
-                        <Grid
-                            item
-                            md={6}
-                            xs={12}
-                        >
-                            {/* yeah i know the check box is not it 
-              please get the color selector component from the shemsu 
-              i couldnt */}
-
-                            <Checkbox
-                                variant="outlined"
-                                defaultChecked
-                                color="secondary"
-                                inputProps={{ 'aria-label': 'secondary checkbox' }}
-                            />
-                            <Checkbox
-                                variant="outlined"
-                                defaultChecked
-                                color="#4287f5"
-                                inputProps={{ 'aria-label': 'secondary checkbox' }}
-                            />
-                            <Checkbox
-                                variant="outlined"
-                                defaultChecked
-                                color="#222222"
-                                inputProps={{ 'aria-label': 'secondary checkbox' }}
-                            />
                         </Grid>
                         <Grid
                             item
@@ -213,7 +163,7 @@ function Addproduct() {
                             <DropzoneArea
                                 acceptedFiles={['image/*']}
                                 dropzoneText={"Add images "}
-                                filesLimit="5"
+                                filesLimit="1"
                                 style={{ margin: 10 }}
                                 onChange={(files) => console.log('Files:', files)}
                             />
@@ -225,13 +175,13 @@ function Addproduct() {
                         Cancel
           </Button>
                     <Button onClick={handleClose} variant="contained" color="secondary" className="box">
-                        Add Product
+                        Add Customer
           </Button>
                 </DialogActions>
             </Dialog>
 
             <Button color="secondary" variant="contained" onClick={handleClickOpen} >
-                Add Product
+                Add Customer
         </Button>
         </div>
     )
@@ -240,4 +190,4 @@ function Addproduct() {
 
 }
 
-export default Addproduct;
+export default AddCustomer;
