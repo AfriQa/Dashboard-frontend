@@ -21,6 +21,7 @@ const routes = [
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'products', element: <ProductListView /> },
       { path: 'settings', element: <SettingsView /> },
+     
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },

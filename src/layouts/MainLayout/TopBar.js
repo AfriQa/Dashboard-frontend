@@ -7,7 +7,7 @@ import {
   Toolbar,
   makeStyles
 } from '@material-ui/core';
-import Logo from '../../components/Logo';
+
 
 const useStyles = makeStyles(({
   root: {
@@ -22,23 +22,26 @@ const useStyles = makeStyles(({
 }));
 
 const TopBar = ({ className, ...rest }) => {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   return (
-    <AppBar
-      className={clsx(classes.root, className)}
-      elevation={0}
-      {...rest}
-    >
-      <Toolbar className={classes.toolbar}>
-        <RouterLink to="/">
-          <Logo />
+    <div>
+      <h1>this is atext </h1>
+    </div>
+    // <AppBar
+    //   className={clsx(classes.root, className)}
+    //   elevation={0}
+    //   {...rest}
+    // >
+    //   <Toolbar className={classes.toolbar}>
+    //     <RouterLink to="/">
+    //       <Logo />
          
-        </RouterLink>
+    //     </RouterLink>
        
-      </Toolbar>
+    //   </Toolbar>
      
-    </AppBar>
+    // </AppBar>
   );
 };
 

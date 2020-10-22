@@ -3,190 +3,105 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Link,
-  TextField,
-  Typography,
-  makeStyles
+    Box,
+    Button,
+    Container,
+    Grid,
+    Link,
+    TextField,
+    Typography,
+    makeStyles
 } from '@material-ui/core';
 
 import FacebookIcon from '../../icons/Facebook'
 import GoogleIcon from '../../icons/Google';
 import Page from "../../components/Page"
+import Image from "../../images/bagLogo.jpg";
+import LogoImg from "../../images/AfriLogo.svg"
+
+
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.dark,
-    height: '100%',
-    paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3)
-  }
+    root: {
+        // backgroundColor: theme.palette.background.dark,
+        // height: '100%',
+        // paddingBottom: theme.spacing(3),
+        // paddingTop: theme.spacing(3)
+    },
+
 }));
 
 const LoginView = () => {
-  const classes = useStyles();
-  const navigate = useNavigate();
+    const classes = useStyles();
+    const navigate = useNavigate();
 
-  return (
-    <Page
-      className={classes.root}
-      title="Login"
-    >
-      <Box
-        display="flex"
-        flexDirection="column"
-        height="100%"
-        justifyContent="center"
-      >
-        <Container maxWidth="sm">
-          <Formik
-            initialValues={{
-              email: 'demo@devias.io',
-              password: 'Password123'
-            }}
-            validationSchema={Yup.object().shape({
-              email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-              password: Yup.string().max(255).required('Password is required')
-            })}
-            onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
-            }}
-          >
-            {({
-              errors,
-              handleBlur,
-              handleChange,
-              handleSubmit,
-              isSubmitting,
-              touched,
-              values
-            }) => (
-              <form onSubmit={handleSubmit}>
-                <Box mb={3}>
-                  <Typography
-                    color="textPrimary"
-                    variant="h2"
-                  >
-                    Sign in
-                  </Typography>
-                  <Typography
-                    color="textSecondary"
-                    gutterBottom
-                    variant="body2"
-                  >
-                    Sign in on the internal platform
-                  </Typography>
-                </Box>
-                <Grid
-                  container
-                  spacing={3}
-                >
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                  >
-                    <Button
-                      color="primary"
-                      fullWidth
-                      startIcon={<FacebookIcon />}
-                      onClick={handleSubmit}
-                      size="large"
-                      variant="contained"
-                    >
-                      Login with Facebook
-                    </Button>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                  >
-                    <Button
-                      fullWidth
-                      startIcon={<GoogleIcon />}
-                      onClick={handleSubmit}
-                      size="large"
-                      variant="contained"
-                    >
-                      Login with Google
-                    </Button>
-                  </Grid>
+    return (
+        <Page
+            //   className={classes.root}
+            title="Login"
+        >
+            <div>
+                <Grid container style={{ minHeight: '100vh' }}>
+                    <Grid item xs={12} sm={6}>
+
+                        <img src={Image}
+                            style={{
+                                width: '100%',
+                                height: '70%',
+                                objectFit: 'cover'
+                            }} alt="liginImage" />
+                    </Grid>
+
+                    <Grid container item xs={12} sm={6}
+                        alignContent="center" direction="column"
+                        justify="space-between"
+                        style={{
+                            padding: 10
+                        }}>
+                        <div />
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            maxWidth: 400,
+                            minWidth: 300
+                        }}>
+                            <Grid container justify="center">
+                                {/* <img src={LogoImg} width={100} /> */}
+                                <h1 style={{
+                                    fontSize: '120px',
+                                    fontFamily: 'Open Sans',
+                                    fontWeight: '200',
+                                    marginTop: '0px',
+                                    marginBottom: '60px',
+                                    left: '615px',
+                                    top: '49px',
+                                }}>sign in</h1>
+                                <h2 style={{
+                                    fontFamily: 'Open Sans',
+                                    fontWeight: '300',
+                                    fontSize: '21px',
+                                    lineHeight: '29px',
+                                    textAlign: 'center',
+                                }} > use your phone number to log in or create a new account </h2>
+                            </Grid>
+                            <TextField color="secondary" label="Phone Number " margin="normal" />
+                            <div style={{ height: 20 }} />
+                            <Button style={{borderRadius:'20px'}} color="secondary"  variant="contained">
+                                login
+                            </Button>
+                            <div style={{ height: 20 }} />
+                            {/* <button> learn more</button> */}
+                        </div>
+                        <div />
+                        <div />
+                    </Grid>
                 </Grid>
-                <Box
-                  mt={3}
-                  mb={1}
-                >
-                  <Typography
-                    align="center"
-                    color="textSecondary"
-                    variant="body1"
-                  >
-                    or login with email address
-                  </Typography>
-                </Box>
-                <TextField
-                  error={Boolean(touched.email && errors.email)}
-                  fullWidth
-                  helperText={touched.email && errors.email}
-                  label="Email Address"
-                  margin="normal"
-                  name="email"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  type="email"
-                  value={values.email}
-                  variant="outlined"
-                />
-                <TextField
-                  error={Boolean(touched.password && errors.password)}
-                  fullWidth
-                  helperText={touched.password && errors.password}
-                  label="Password"
-                  margin="normal"
-                  name="password"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  type="password"
-                  value={values.password}
-                  variant="outlined"
-                />
-                <Box my={2}>
-                  <Button
-                    color="primary"
-                    disabled={isSubmitting}
-                    fullWidth
-                    size="large"
-                    type="submit"
-                    variant="contained"
-                  >
-                    Sign in now
-                  </Button>
-                </Box>
-                <Typography
-                  color="textSecondary"
-                  variant="body1"
-                >
-                  Don&apos;t have an account?
-                  {' '}
-                  <Link
-                    component={RouterLink}
-                    to="/register"
-                    variant="h6"
-                  >
-                    Sign up
-                  </Link>
-                </Typography>
-              </form>
-            )}
-          </Formik>
-        </Container>
-      </Box>
-    </Page>
-  );
+
+
+
+            </div>
+        </Page>
+    );
 };
 
 export default LoginView;
