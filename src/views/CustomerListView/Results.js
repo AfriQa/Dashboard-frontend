@@ -1,37 +1,21 @@
 import React, { useState } from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import {
-  Avatar,
-  Box,
-  Card,
-  Checkbox,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TablePagination,
-  TableRow,
-  Typography,
-  makeStyles
-} from '@material-ui/core';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import TablePagination from '@material-ui/core/TablePagination';
+import Card from '@material-ui/core/Card';
+import Checkbox from '@material-ui/core/Checkbox';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 import getInitials from "../../utils/getInitials";
-const useStyles = makeStyles((theme) => ({
-  root: {
-    borderRadius:30, 
-    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))'
-  },
-  avatar: {
-    marginRight: theme.spacing(2),
 
 
-  }
-}));
-
-const Results = ({ className, customers, ...rest }) => {
-  const classes = useStyles();
+const Results = ({ customers}) => {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
@@ -77,19 +61,15 @@ const Results = ({ className, customers, ...rest }) => {
   };
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className="resultsRoot">
       <PerfectScrollbar>
-        <Box minWidth={1050}>
-          <Table>
+          <Table className="table">
             <TableHead>
               <TableRow>
                 <TableCell padding="checkbox">
                   <Checkbox
                     checked={selectedCustomerIds.length === customers.length}
-                    color="primary"
+                    color="secondary"
                     indeterminate={
                       selectedCustomerIds.length > 0
                       && selectedCustomerIds.length < customers.length
@@ -129,12 +109,9 @@ const Results = ({ className, customers, ...rest }) => {
                     />
                   </TableCell>
                   <TableCell>
-                    <Box
-                      alignItems="center"
-                      display="flex"
-                    >
+                    <Box className="tableBox">
                       <Avatar
-                        className={classes.avatar}
+                        className="avatar"
                         src={customer.avatarUrl}
                       >
                         {getInitials(customer.name)}
@@ -163,7 +140,7 @@ const Results = ({ className, customers, ...rest }) => {
               ))}
             </TableBody>
           </Table>
-        </Box>
+       
       </PerfectScrollbar>
       <TablePagination
         component="div"
@@ -178,9 +155,5 @@ const Results = ({ className, customers, ...rest }) => {
   );
 };
 
-Results.propTypes = {
-  className: PropTypes.string,
-  customers: PropTypes.array.isRequired
-};
 
 export default Results;

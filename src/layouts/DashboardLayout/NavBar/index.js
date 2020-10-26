@@ -46,6 +46,11 @@ const items = [
     title: 'Products'
   },
   {
+    href: '/register',
+    icon: UserPlusIcon,
+    title: 'Orders'
+  },
+  {
     href: '/app/account',
     icon: UserIcon,
     title: 'Account'
@@ -60,11 +65,7 @@ const items = [
     icon: LockIcon,
     title: 'Login'
   },
-  {
-    href: '/register',
-    icon: UserPlusIcon,
-    title: 'Register'
-  },
+  
   {
     href: '/404',
     icon: AlertCircleIcon,

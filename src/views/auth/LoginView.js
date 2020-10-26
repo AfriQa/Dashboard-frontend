@@ -1,192 +1,79 @@
 import React from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
-import { Formik } from 'formik';
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Link,
-  TextField,
-  Typography,
-  makeStyles
-} from '@material-ui/core';
-
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import IconButton from '@material-ui/core/IconButton';
 import FacebookIcon from '../../icons/Facebook'
 import GoogleIcon from '../../icons/Google';
+import TwitterIcon from '@material-ui/icons/Twitter';
 import Page from "../../components/Page"
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.dark,
-    height: '100%',
-    paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3)
-  }
-}));
+import Image from "../../images/bagLogo.jpg";
+import Divider from '@material-ui/core/Divider';
+import './logIn.css'
 
 const LoginView = () => {
-  const classes = useStyles();
-  const navigate = useNavigate();
 
-  return (
-    <Page
-      className={classes.root}
-      title="Login"
-    >
-      <Box
-        display="flex"
-        flexDirection="column"
-        height="100%"
-        justifyContent="center"
-      >
-        <Container maxWidth="sm">
-          <Formik
-            initialValues={{
-              email: 'demo@devias.io',
-              password: 'Password123'
-            }}
-            validationSchema={Yup.object().shape({
-              email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-              password: Yup.string().max(255).required('Password is required')
-            })}
-            onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
-            }}
-          >
-            {({
-              errors,
-              handleBlur,
-              handleChange,
-              handleSubmit,
-              isSubmitting,
-              touched,
-              values
-            }) => (
-              <form onSubmit={handleSubmit}>
-                <Box mb={3}>
-                  <Typography
-                    color="textPrimary"
-                    variant="h2"
-                  >
-                    Sign in
-                  </Typography>
-                  <Typography
-                    color="textSecondary"
-                    gutterBottom
-                    variant="body2"
-                  >
-                    Sign in on the internal platform
-                  </Typography>
-                </Box>
-                <Grid
-                  container
-                  spacing={3}
-                >
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                  >
-                    <Button
-                      color="primary"
-                      fullWidth
-                      startIcon={<FacebookIcon />}
-                      onClick={handleSubmit}
-                      size="large"
-                      variant="contained"
+
+    return (
+        <Page title="Login" >
+            <div className="everything">
+                <Grid container style={{ minHeight: '10vh' }}>
+                    <Grid alignContent="center" item xs={12} sm={6}>
+
+                        <img src={Image} className="bagImage" alt="liginImage" />
+                        <div className="afriName">   Afri - Eqa</div>
+                    </Grid>
+
+                    <Grid container item xs={12} sm={6}
+                        alignContent="center"
+                        direction="column"
+                        justify="flex-start"
+                        className="randOne"
                     >
-                      Login with Facebook
-                    </Button>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                  >
-                    <Button
-                      fullWidth
-                      startIcon={<GoogleIcon />}
-                      onClick={handleSubmit}
-                      size="large"
-                      variant="contained"
-                    >
-                      Login with Google
-                    </Button>
-                  </Grid>
+                        <div />
+                        <div className="formContainer" >
+                            <Grid container justify="center">
+
+                                <h1 className="signHeader">sign in</h1>
+                                <h2 className="infotext" > use your phone number to log in or create a new account </h2>
+                            </Grid>
+                            <div style={{ height: 30 }} />
+                            <TextField color="secondary" variant="filled" label="Phone Number " style={{
+                                borderRadius: '20px'
+                            }} />
+                            <div style={{ height: 40 }} />
+                            <Button style={{ borderRadius: '20px' }} color="secondary" variant="contained">
+                                login
+                            </Button>
+                            <div style={{ height: 40 }} />
+
+
+                            <h2 color="secondary" className="infotext" style={{
+                               
+                            }} > or login using  </h2>
+                            <div style={{ height: 30 }} />
+
+                            <Divider />
+
+                            <Grid align="center" justify="space-between" >
+                                <IconButton color="secondary" >
+                                    <TwitterIcon />
+                                </IconButton>
+                                <IconButton color="secondary" >
+                                    <GoogleIcon />
+                                </IconButton>
+                                <IconButton color="secondary" >
+                                    <FacebookIcon />
+                                </IconButton>
+                            </Grid>
+                        </div>
+                        <div />
+                        <div />
+                    </Grid>
                 </Grid>
-                <Box
-                  mt={3}
-                  mb={1}
-                >
-                  <Typography
-                    align="center"
-                    color="textSecondary"
-                    variant="body1"
-                  >
-                    or login with email address
-                  </Typography>
-                </Box>
-                <TextField
-                  error={Boolean(touched.email && errors.email)}
-                  fullWidth
-                  helperText={touched.email && errors.email}
-                  label="Email Address"
-                  margin="normal"
-                  name="email"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  type="email"
-                  value={values.email}
-                  variant="outlined"
-                />
-                <TextField
-                  error={Boolean(touched.password && errors.password)}
-                  fullWidth
-                  helperText={touched.password && errors.password}
-                  label="Password"
-                  margin="normal"
-                  name="password"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  type="password"
-                  value={values.password}
-                  variant="outlined"
-                />
-                <Box my={2}>
-                  <Button
-                    color="primary"
-                    disabled={isSubmitting}
-                    fullWidth
-                    size="large"
-                    type="submit"
-                    variant="contained"
-                  >
-                    Sign in now
-                  </Button>
-                </Box>
-                <Typography
-                  color="textSecondary"
-                  variant="body1"
-                >
-                  Don&apos;t have an account?
-                  {' '}
-                  <Link
-                    component={RouterLink}
-                    to="/register"
-                    variant="h6"
-                  >
-                    Sign up
-                  </Link>
-                </Typography>
-              </form>
-            )}
-          </Formik>
-        </Container>
-      </Box>
-    </Page>
-  );
+            </div>
+        </Page>
+    );
 };
 
 export default LoginView;

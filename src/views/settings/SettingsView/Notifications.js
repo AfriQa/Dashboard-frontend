@@ -1,37 +1,33 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Checkbox,
-  Divider,
-  FormControlLabel,
-  Grid,
-  Typography,
-  makeStyles
-} from '@material-ui/core';
+import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
+import Checkbox from '@material-ui/core/Checkbox';
+import CardHeader from '@material-ui/core/CardHeader';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import { withStyles } from '@material-ui/core/styles';
+import { green } from '@material-ui/core/colors';
+import './settings.css'
 
-const useStyles = makeStyles(({
-  root: {},
-  item: {
-    display: 'flex',
-    flexDirection: 'column'
-  }
-}));
+const GreenCheckbox = withStyles({
+  root: {
+    color: green[400],
+    '&$checked': {
+      color: green[600],
+    },
+  },
+  checked: {},
+})((props) => <Checkbox color="default" {...props} />);
 
-const Notifications = ({ className, ...rest }) => {
-  const classes = useStyles();
 
+const Notifications = () => {
   return (
-    <form
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
-      <Card>
+    <form>
+      <Card className="root">
         <CardHeader
           subheader="Manage the notifications"
           title="Notifications"
@@ -39,88 +35,42 @@ const Notifications = ({ className, ...rest }) => {
         <Divider />
         <CardContent>
           <Grid
-            container
-            spacing={6}
-            wrap="wrap"
+            item
+            md={6}
+            sm={6}
+            xs={12}
           >
-            <Grid
-              className={classes.item}
-              item
-              md={4}
-              sm={6}
-              xs={12}
+            <Typography
+              color="textPrimary"
+              gutterBottom
+              variant="h6"
             >
-              <Typography
-                color="textPrimary"
-                gutterBottom
-                variant="h6"
-              >
-                Notifications
+              Notifications and Messages
               </Typography>
+            <div className="checkBox">
               <FormControlLabel
-                control={(
-                  <Checkbox defaultChecked />
-                )}
+                control={<GreenCheckbox
+                  name="email" />}
                 label="Email"
               />
+
               <FormControlLabel
-                control={(
-                  <Checkbox defaultChecked />
-                )}
-                label="Push Notifications"
+                control={<GreenCheckbox
+                  name="pushNotifications" />}
+                label="Push Notifications "
               />
               <FormControlLabel
-                control={<Checkbox />}
+                control={<GreenCheckbox
+                  name="textMessage" />}
                 label="Text Messages"
               />
-              <FormControlLabel
-                control={(
-                  <Checkbox defaultChecked />
-                )}
-                label="Phone calls"
-              />
-            </Grid>
-            <Grid
-              className={classes.item}
-              item
-              md={4}
-              sm={6}
-              xs={12}
-            >
-              <Typography
-                color="textPrimary"
-                gutterBottom
-                variant="h6"
-              >
-                Messages
-              </Typography>
-              <FormControlLabel
-                control={(
-                  <Checkbox defaultChecked />
-                )}
-                label="Email"
-              />
-              <FormControlLabel
-                control={<Checkbox />}
-                label="Push Notifications"
-              />
-              <FormControlLabel
-                control={(
-                  <Checkbox defaultChecked />
-                )}
-                label="Phone calls"
-              />
-            </Grid>
+            </div>
           </Grid>
         </CardContent>
         <Divider />
-        <Box
-          display="flex"
-          justifyContent="flex-end"
-          p={2}
-        >
+        <Box className="box">
           <Button
-            color="primary"
+            color="secondary"
             variant="contained"
           >
             Save
@@ -131,8 +81,6 @@ const Notifications = ({ className, ...rest }) => {
   );
 };
 
-Notifications.propTypes = {
-  className: PropTypes.string
-};
+
 
 export default Notifications;

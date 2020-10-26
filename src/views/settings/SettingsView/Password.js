@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
 import {
   Box,
   Button,
@@ -9,15 +7,10 @@ import {
   CardHeader,
   Divider,
   TextField,
-  makeStyles
 } from '@material-ui/core';
-
-const useStyles = makeStyles(({
-  root: {}
-}));
+import './settings.css'
 
 const Password = ({ className, ...rest }) => {
-  const classes = useStyles();
   const [values, setValues] = useState({
     password: '',
     confirm: ''
@@ -32,8 +25,7 @@ const Password = ({ className, ...rest }) => {
 
   return (
     <form
-      className={clsx(classes.root, className)}
-      {...rest}
+      className="root"
     >
       <Card>
         <CardHeader
@@ -43,34 +35,49 @@ const Password = ({ className, ...rest }) => {
         <Divider />
         <CardContent>
           <TextField
-            fullWidth
-            label="Password"
-            margin="normal"
-            name="password"
             onChange={handleChange}
-            type="password"
-            value={values.password}
-            variant="outlined"
+            //  value={values.password}
+            id="standard-full-width"
+            style={{ margin: 10 }}
+            placeholder=" Current Password "
+            helperText="Your current Password "
+            fullWidth
+            color="secondary"
           />
+
           <TextField
-            fullWidth
-            label="Confirm password"
-            margin="normal"
-            name="confirm"
+
             onChange={handleChange}
+            // value={values.password}
+            id="standard-full-width"
+            style={{ margin: 8 }}
+            placeholder=" New Password "
+            helperText="New Password "
+            fullWidth
             type="password"
-            value={values.confirm}
-            variant="outlined"
+            color="secondary"
+          />
+
+
+          <TextField
+            onChange={handleChange}
+            //  value={values.password}
+            id="standard-full-width"
+            style={{ margin: 8 }}
+            placeholder="Confirm Password "
+            helperText="Confirm New Password "
+            fullWidth
+            type="password"
+            color="secondary"
           />
         </CardContent>
         <Divider />
         <Box
-          display="flex"
-          justifyContent="flex-end"
+          className="box"
           p={2}
         >
           <Button
-            color="primary"
+            color="secondary"
             variant="contained"
           >
             Update
@@ -81,8 +88,5 @@ const Password = ({ className, ...rest }) => {
   );
 };
 
-Password.propTypes = {
-  className: PropTypes.string
-};
 
 export default Password;

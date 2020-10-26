@@ -43,9 +43,13 @@ const ProductCard = ({ className, product, ...rest }) => {
         <Box
           display="flex"
           justifyContent="center"
-          mb={3}
+          mr={3}
         >
-          <Avatar
+          <Avatar ml={3}
+            alt="Product"
+            src={product.media}
+            variant="square"
+          /><Avatar mr={3}
             alt="Product"
             src={product.media}
             variant="square"
