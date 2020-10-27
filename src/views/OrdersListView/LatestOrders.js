@@ -6,7 +6,6 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import { makeStyles } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
-import Button from '@material-ui/core/Button';
 import CardHeader from '@material-ui/core/CardHeader';
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
@@ -17,8 +16,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-
+// import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import CustomerDetails from '../CustomerListView/customerDetails';
 const data = [
   {
     id: uuid(),
@@ -180,6 +179,9 @@ const LatestOrders = ({ className, ...rest }) => {
                   </TableCell>
                   <TableCell>
                     {order.status}
+                  </TableCell>
+                  <TableCell>
+                    <CustomerDetails/>
                   </TableCell>
                 </TableRow>
               ))}

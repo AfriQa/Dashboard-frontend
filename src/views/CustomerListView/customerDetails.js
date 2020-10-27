@@ -12,11 +12,13 @@ import Tooltip from '@material-ui/core/Tooltip';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+
 import "./customer.css"
 
 const data = [
@@ -97,7 +99,124 @@ const History = () => {
     const [orders] = useState(data);
     return (
         <div>
-            <Divider />
+
+            <Grid
+                container
+                spacing={3}
+            >
+                <Grid
+                    className="inputfeilds"
+                    item
+                    md={6}
+                    xs={12}
+                >
+                    <TextField
+                        placeholder="Full Name"
+                        helperText="Full Name "
+                        color="secondary"
+                        disabled
+                        required
+                        fullWidth
+                    />
+                </Grid>
+                <Grid
+                    item
+                    md={6}
+                    xs={12}
+                >
+                    <TextField
+
+                        type="number"
+                        disabled
+                        helperText="Phone Number "
+                        color="secondary"
+                        placeholder="Phone Number "
+                    />
+                </Grid>
+                <Grid
+                    item
+                    md={6}
+                    xs={12}
+                >
+                    <TextField
+                        disabled
+                        type="email"
+                        helperText="Email"
+                        color="secondary"
+                        placeholder="E-mail "
+                    />
+
+                </Grid>
+
+                <Grid
+                    item
+                    md={6}
+                    xs={12}
+                >
+                    <TextField
+                        placeholder="Location"
+                        helperText="Location "
+                        disabled
+                        color="secondary"
+                        required
+                        type="location"
+                    >
+                    </TextField>
+                </Grid>
+                <Grid
+                    item
+                    md={4}
+                    xs={12}
+                >
+                    <TextField
+                        disabled
+                        placeholder="Regestration Date"
+                        helperText="Regestration Date"
+                        fullWidth
+                        color="secondary"
+                        type="date"
+                    >
+                    </TextField>
+                </Grid>
+                <Grid
+                    item
+                    md={4}
+                    xs={12}
+                >
+                    <TextField
+                        disabled
+                        placeholder="Number of items Purchased  "
+                        helperText="Number of items Purchased   "
+                        fullWidth
+                        color="secondary"
+                        required
+                        type="number"
+                    >
+                    </TextField>
+                </Grid>
+                <Grid
+                    item
+                    md={4}
+                    xs={12}
+                >
+                    <TextField
+                        disabled
+                        placeholder="Toatal Money Spent   "
+                        helperText="Toatal Money Spent    "
+                        fullWidth
+                        color="secondary"
+                        required
+                        type="number"
+                    >
+                    </TextField>
+                </Grid>
+
+            </Grid>
+
+
+
+
+
             <PerfectScrollbar>
                 <Box minWidth={800}>
                     <Table>
@@ -165,6 +284,7 @@ const History = () => {
                 p={2}
             >
             </Box>
+
         </div>
     );
 };
@@ -189,16 +309,16 @@ export default function AlertDialog() {
     return (
         <div className="history">
             <Button variant="contained" color="secondary" onClick={handleClickOpen}>
-                History
+                Details
       </Button>
             <Dialog
-            
+
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title">{"Customer Purchase History"}</DialogTitle>
+                <DialogTitle id="alert-dialog-title">{"Customer Details"}</DialogTitle>
                 <DialogContent>
 
                     <History />

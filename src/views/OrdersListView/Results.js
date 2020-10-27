@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LatestOrders from '../reports/DashboardView/LatestOrders'
+import LatestOrders from './LatestOrders'
 
 const Results = () => {
   // const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
