@@ -2,19 +2,17 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import { v4 as uuid } from 'uuid';
 import moment from 'moment';
-import {
-  Box,
-  Button,
-  Card,
-  CardHeader,
-  Divider,
-  IconButton,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  makeStyles
-} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
+import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemText from '@material-ui/core/ListItemText';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
