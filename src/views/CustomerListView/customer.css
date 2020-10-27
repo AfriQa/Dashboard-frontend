@@ -7,6 +7,9 @@
     margin-right: 10px;
     border-radius:30px                                                                                                                                                                                 
 }
+.history Button {
+    border-radius:30px 
+}
 .searchBar {
     max-width: 100%;
     border : 10px;
