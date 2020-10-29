@@ -3,25 +3,21 @@ import clsx from 'clsx';
 import moment from 'moment';
 import { v4 as uuid } from 'uuid';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import PropTypes from 'prop-types';
-import {
-  Box,
-  Button,
-  Card,
-  CardHeader,
-  Chip,
-  Divider,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  TableSortLabel,
-  Tooltip,
-  makeStyles
-} from '@material-ui/core';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-
+import { makeStyles } from '@material-ui/core';
+import Tooltip from '@material-ui/core/Tooltip';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
+import CardHeader from '@material-ui/core/CardHeader';
+import Divider from '@material-ui/core/Divider';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import TablePagination from '@material-ui/core/TablePagination';
+// import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import CustomerDetails from '../CustomerListView/customerDetails';
 const data = [
   {
     id: uuid(),
@@ -31,7 +27,8 @@ const data = [
       name: 'Ekaterina Tankova'
     },
     createdAt: 1555016400000,
-    status: 'pending'
+    status: 'pending',
+    items: 'this item and this item and this item '
   },
   {
     id: uuid(),
@@ -41,7 +38,9 @@ const data = [
       name: 'Cao Yu'
     },
     createdAt: 1555016400000,
-    status: 'delivered'
+    status: 'delivered',
+    items: 'this item and this item and this item '
+
   },
   {
     id: uuid(),
@@ -51,7 +50,9 @@ const data = [
       name: 'Alexa Richardson'
     },
     createdAt: 1554930000000,
-    status: 'refunded'
+    status: 'refunded',
+    items: 'this item and this item and this item '
+
   },
   {
     id: uuid(),
@@ -61,7 +62,9 @@ const data = [
       name: 'Anje Keizer'
     },
     createdAt: 1554757200000,
-    status: 'pending'
+    status: 'pending',
+    items: 'this item and this item and this item '
+
   },
   {
     id: uuid(),
@@ -71,7 +74,9 @@ const data = [
       name: 'Clarke Gillebert'
     },
     createdAt: 1554670800000,
-    status: 'delivered'
+    status: 'delivered',
+    items: 'this item and this item and this item '
+
   },
   {
     id: uuid(),
@@ -81,7 +86,9 @@ const data = [
       name: 'Adam Denisov'
     },
     createdAt: 1554670800000,
-    status: 'delivered'
+    status: 'delivered',
+    items: 'this item and this item and this item '
+
   }
 ];
 
@@ -98,6 +105,17 @@ const useStyles = makeStyles(() => ({
 const LatestOrders = ({ className, ...rest }) => {
   const classes = useStyles();
   const [orders] = useState(data);
+
+  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(0);
+
+  const handleLimitChange = (event) => {
+    setLimit(event.target.value);
+  };
+
+  const handlePageChange = (event, newPage) => {
+    setPage(newPage);
+  };
 
   return (
     <Card
@@ -117,6 +135,9 @@ const LatestOrders = ({ className, ...rest }) => {
                 <TableCell>
                   Customer
                 </TableCell>
+                <TableCell>
+                  Items
+                </TableCell>
                 <TableCell sortDirection="desc">
                   <Tooltip
                     enterDelay={300}
@@ -133,6 +154,9 @@ const LatestOrders = ({ className, ...rest }) => {
                 <TableCell>
                   Status
                 </TableCell>
+                <TableCell>
+                  Customer Details
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -148,14 +172,16 @@ const LatestOrders = ({ className, ...rest }) => {
                     {order.customer.name}
                   </TableCell>
                   <TableCell>
+                    {order.items}
+                  </TableCell>
+                  <TableCell>
                     {moment(order.createdAt).format('DD/MM/YYYY')}
                   </TableCell>
                   <TableCell>
-                    <Chip
-                      color="primary"
-                      label={order.status}
-                      size="small"
-                    />
+                    {order.status}
+                  </TableCell>
+                  <TableCell>
+                    <CustomerDetails/>
                   </TableCell>
                 </TableRow>
               ))}
@@ -163,26 +189,20 @@ const LatestOrders = ({ className, ...rest }) => {
           </Table>
         </Box>
       </PerfectScrollbar>
-      <Box
-        display="flex"
-        justifyContent="flex-end"
-        p={2}
-      >
-        <Button
-          color="primary"
-          endIcon={<ArrowRightIcon />}
-          size="small"
-          variant="text"
-        >
-          View all
-        </Button>
-      </Box>
+
+        <TablePagination
+      component="div"
+      count={data.length}
+      onChangePage={handlePageChange}
+      onChangeRowsPerPage={handleLimitChange}
+      page={page}
+      rowsPerPage={limit}
+      rowsPerPageOptions={[5, 10, 25]}
+    />
     </Card>
   );
 };
 
-LatestOrders.propTypes = {
-  className: PropTypes.string
-};
+
 
 export default LatestOrders;

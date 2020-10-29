@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {
-  Avatar,
-  Box,
-  Divider,
-  Drawer,
-  Hidden,
-  List,
-  Typography,
-  makeStyles
-} from '@material-ui/core';
+import { makeStyles} from '@material-ui/core';
+import Avatar from '@material-ui/core/Avatar';
+import Box from '@material-ui/core/Box';
+import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
+import Hidden from '@material-ui/core/Hidden';
+import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
+
+
+
 import {
   AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
@@ -18,8 +19,8 @@ import {
   Settings as SettingsIcon,
   ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
-  UserPlus as UserPlusIcon,
-  Users as UsersIcon
+  Users as UsersIcon,
+  Archive as ArchiveIcon
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -46,8 +47,8 @@ const items = [
     title: 'Products'
   },
   {
-    href: '/register',
-    icon: UserPlusIcon,
+    href: '/app/orders',
+    icon: ArchiveIcon,
     title: 'Orders'
   },
   {

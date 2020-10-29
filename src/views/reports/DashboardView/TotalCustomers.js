@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: colors.green[600],
     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
-
     height: 56,
     width: 56
   },
