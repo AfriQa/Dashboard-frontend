@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as actions from "../api";
+import endPoints from "../../constants/endPoints"
 // import { toast } from "react-toastify";
 
 // axios.defaults.baseURL = "https://sparta-finance.herokuapp.com/api/v1";
@@ -18,24 +19,29 @@ axios.interceptors.response.use(null, (error) => {
 const api = ({ dispatch, getState }) => (next) => async (action) => {
   if (action.type !== actions.apiCallBegan.type) return next(action);
 
-  const { url, method, data, onStart, onSuccess, onError } = action.payload;
+  const url = endPoints.deployed? endPoints.deployedUrl : endPoints.localUrl
+
+  const { body, tag, method, onStart, onSuccess, onFailure, callback } = action.payload;
   if (onStart) dispatch({ type: onStart });
   next(action);
   try {
     const response = await axios.request({
       url,
       method,
-      data,
+      data: body,
     });
     //General
-    dispatch(actions.apiCallSuccess(response.data));
+    dispatch(actions.apiCallSuccess(response.data[tag]));
     //Specific
-    if (onSuccess) dispatch({ type: onSuccess, payload: response.data });
+    if (onSuccess) {
+      dispatch({ type: onSuccess, payload: response.data[tag] })
+      callback({ type: onSuccess, payload: response.data[tag] })
+    }
   } catch (error) {
     //General
     dispatch(actions.apiCallFailed(error.message));
     //Specific
-    if (onError) {
+    if (onFailure) {
       if (
         error.response &&
         (error.response.status === 400 ||
@@ -43,8 +49,12 @@ const api = ({ dispatch, getState }) => (next) => async (action) => {
           error.response.status === 401)
       ) {
         console.log(error.response.data.errors);
-        dispatch({ type: onError, payload: error.response.data.errors });
-      } else dispatch({ type: onError, payload: error.message });
+        callback({ type: onFailure, payload: error.response.data.errors })
+        dispatch({ type: onFailure, payload: error.response.data.errors });
+      } else {
+        callback({ type: onFailure, payload: error.message })
+        dispatch({ type: onFailure, payload: error.message })
+      };
     }
   }
 };

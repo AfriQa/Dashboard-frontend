@@ -10,9 +10,7 @@ import { DropzoneArea } from 'material-ui-dropzone';
 import "./customer.css"
 
 function AddCustomer() {
-
     const [open, setOpen] = React.useState(false);
-
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -185,9 +183,6 @@ function AddCustomer() {
         </Button>
         </div>
     )
-
-
-
 }
 
 export default AddCustomer;
