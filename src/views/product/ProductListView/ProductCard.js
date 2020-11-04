@@ -110,7 +110,7 @@ const ProductCard = ({ className, product, ...rest }) => {
             >
               {product.totalDownloads}
               {' '}
-              Downloads
+              Sales
             </Typography>
           </Grid>
         </Grid>

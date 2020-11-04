@@ -7,11 +7,16 @@ import reducer from './redux/reducer'
 import logger from './redux/middleware/logger'
 import api from './redux/middleware/api'
 import { Provider } from "react-redux"
-import thunk from "redux-thunk";
-import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk"
+import { save, load } from "redux-localstorage-simple"
+import { createStore, applyMiddleware } from "redux"
+import 'bootstrap/dist/css/bootstrap.css'
 
 export const store = createStore(
   reducer,
+  // applyMiddleware(thunk, logger({ destination: "console" }), api)
+  // load(),
+  // applyMiddleware(thunk, save(), logger({ destination: "console" }), api)
   applyMiddleware(thunk, logger({ destination: "console" }), api)
 )
 
@@ -23,4 +28,4 @@ ReactDOM.render((
   </Provider>
 ), document.getElementById('root'))
 
-serviceWorker.register();
+serviceWorker.register()

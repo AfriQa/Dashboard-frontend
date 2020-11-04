@@ -1,32 +1,32 @@
-const parentStatus = {
+export const reduxStatus = {
     initial: "initial",
     pending: "pending",
     success: "success",
     failure: "failure"
 }
 
-export default parentStatus
+export default reduxStatus
 
 export const STATE_INI = {
     loading: false,
-    status: parentStatus.initial,
+    status: reduxStatus.initial,
     errors: null
 }
 
 export const STATE_REQ = {
     loading: true,
-    status: parentStatus.pending,
+    status: reduxStatus.pending,
     errors: null
 }
 
 export const STATE_OK = {
     loading: false,
-    status: parentStatus.success,
+    status: reduxStatus.success,
     errors: null
 }
 
 export const STATE_ERR = (errors) => ({
     loading: false,
-    status: parentStatus.failure,
+    status: reduxStatus.failure,
     errors
 })

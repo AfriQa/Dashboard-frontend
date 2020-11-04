@@ -62,8 +62,6 @@ const Results = ({ customers }) => {
   };
 
 
-
-
 return (
   <Card className="resultsRoot">
     <PerfectScrollbar>
@@ -138,7 +136,8 @@ return (
                 {customer.email}
               </TableCell>
               <TableCell>
-                {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
+                {/* {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`} */}
+                {customer.location}
               </TableCell>
               <TableCell>
                 {customer.phone}

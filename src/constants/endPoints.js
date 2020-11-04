@@ -1,5 +1,5 @@
 export default {
-    deployed: false,
+    deployed: true,
     localUrl: "http://localhost:4000/graphql",
-    deployedUrl: "https://afrieqa-admin.herokuapp.com"
+    deployedUrl: "https://afrieqa.herokuapp.com/"
 }

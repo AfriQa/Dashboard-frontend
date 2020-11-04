@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import clsx from 'clsx';
-import moment from 'moment';
-import { v4 as uuid } from 'uuid';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import { makeStyles } from '@material-ui/core';
-import Tooltip from '@material-ui/core/Tooltip';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
-import CardHeader from '@material-ui/core/CardHeader';
-import Divider from '@material-ui/core/Divider';
-import Box from '@material-ui/core/Box';
-import Card from '@material-ui/core/Card';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import TablePagination from '@material-ui/core/TablePagination';
-// import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import CustomerDetails from '../CustomerListView/customerDetails';
+import React, { useState } from 'react'
+import clsx from 'clsx'
+import moment from 'moment'
+import { v4 as uuid } from 'uuid'
+import PerfectScrollbar from 'react-perfect-scrollbar'
+import { makeStyles } from '@material-ui/core'
+import Tooltip from '@material-ui/core/Tooltip'
+import TableSortLabel from '@material-ui/core/TableSortLabel'
+import CardHeader from '@material-ui/core/CardHeader'
+import Divider from '@material-ui/core/Divider'
+import Box from '@material-ui/core/Box'
+import Card from '@material-ui/core/Card'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import TablePagination from '@material-ui/core/TablePagination'
+// import ArrowRightIcon from '@material-ui/icons/ArrowRight'
+import CustomerDetails from '../CustomerListView/customerDetails'
 const data = [
   {
     id: uuid(),
@@ -90,7 +90,7 @@ const data = [
     items: 'this item and this item and this item '
 
   }
-];
+]
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -100,22 +100,38 @@ const useStyles = makeStyles(() => ({
   actions: {
     justifyContent: 'flex-end'
   }
-}));
+}))
 
-const LatestOrders = ({ className, ...rest }) => {
-  const classes = useStyles();
-  const [orders] = useState(data);
+const LatestOrders = ({ className, orders, customers, ...rest }) => {
+  const classes = useStyles()
+  const fetchedOrders = orders.map(order => {
+    const customer = customers.find(customer => order.customer === customer._id)
+    if (customer) {
+      return {
+        ...data[0],
+        id: order._id,
+        createdAt: Number(order.createdAt),
+        amount: Number(order.amount),
+        status: String(order.status),
+        customer: {
+          name: customer.firstName + " " + customer.lastName
+        }
+      }
+    } else {
+      return undefined
+    }
+  })
 
-  const [limit, setLimit] = useState(10);
-  const [page, setPage] = useState(0);
+  const [limit, setLimit] = useState(10)
+  const [page, setPage] = useState(0)
 
   const handleLimitChange = (event) => {
-    setLimit(event.target.value);
-  };
+    setLimit(event.target.value)
+  }
 
   const handlePageChange = (event, newPage) => {
-    setPage(newPage);
-  };
+    setPage(newPage)
+  }
 
   return (
     <Card
@@ -160,10 +176,10 @@ const LatestOrders = ({ className, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {orders.map((order) => (
+              {fetchedOrders[0] && fetchedOrders.map((order) => (
                 <TableRow
                   hover
-                  key={order.id}
+                  key={order._id}
                 >
                   <TableCell>
                     {order.ref}
@@ -200,9 +216,9 @@ const LatestOrders = ({ className, ...rest }) => {
       rowsPerPageOptions={[5, 10, 25]}
     />
     </Card>
-  );
-};
+  )
+}
 
 
 
-export default LatestOrders;
+export default LatestOrders

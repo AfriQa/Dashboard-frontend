@@ -1,0 +1,58 @@
+import Model from "../index"
+import { STATE_REQ, STATE_OK, STATE_ERR } from "../../../../constants/reduxStatus"
+
+
+describe('should play', () => {
+    test('should work on object model fetch', () => {
+        const NewModel = new Model({ stateName: "new_one" })
+        NewModel.setInitialState()
+        NewModel.createSlice()
+        const reducer = NewModel.getReducer()
+        const { requestFetch, successFetch, failureFetch } = NewModel.getActions()
+        const { selectData, selectFetchStatus } = NewModel.getSelectors()
+        var nextState = reducer(undefined, requestFetch())
+        expect(selectFetchStatus(NewModel.resolveState(nextState)))
+            .toEqual(STATE_REQ)
+        expect(selectData(NewModel.resolveState(nextState)))
+            .toEqual({})
+        nextState = reducer(nextState, successFetch({ name: 'John Doe' }))
+        expect(selectFetchStatus(NewModel.resolveState(nextState)))
+            .toEqual(STATE_OK)
+        expect(selectData(NewModel.resolveState(nextState)))
+            .toEqual({ name: "John Doe" })
+        const errors = { name: 'Error' }
+        nextState = reducer(nextState, failureFetch(errors))
+        expect(selectFetchStatus(NewModel.resolveState(nextState)))
+            .toEqual(STATE_ERR(errors))
+        expect(selectData(NewModel.resolveState(nextState)))
+            .toEqual({ name: "John Doe" })
+    })
+
+    test('should work on object model post', () => {
+        const NewModel = new Model({ stateName: "new_one" })
+        NewModel.setInitialState()
+        NewModel.createSlice()
+        const reducer = NewModel.getReducer()
+        const { requestAdd, successAdd, failureAdd, successEdit } = NewModel.getActions()
+        const { selectData, selectAddStatus } = NewModel.getSelectors()
+        var nextState = reducer(undefined, requestAdd())
+        expect(selectAddStatus(NewModel.resolveState(nextState)))
+            .toEqual(STATE_REQ)
+        expect(selectData(NewModel.resolveState(nextState)))
+            .toEqual({})
+        nextState = reducer(nextState, successAdd({ name: "John Doe" }))
+        expect(selectAddStatus(NewModel.resolveState(nextState)))
+            .toEqual(STATE_OK)
+        expect(selectData(NewModel.resolveState(nextState)))
+            .toEqual({ name: "John Doe" })
+        const errors = { name: 'Error' }
+        nextState = reducer(nextState, failureAdd(errors))
+        expect(selectAddStatus(NewModel.resolveState(nextState)))
+            .toEqual(STATE_ERR(errors))
+        expect(selectData(NewModel.resolveState(nextState)))
+            .toEqual({ name: "John Doe" })
+        nextState = reducer(nextState, successEdit({ id: 1 }))
+        expect(selectData(NewModel.resolveState(nextState)))
+            .toEqual({ name: "John Doe", id: 1 })
+    })
+})
