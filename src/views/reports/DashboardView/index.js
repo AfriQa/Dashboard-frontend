@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = () => {
   const classes = useStyles();
-
+  console.log("Here")
   return (
     <Page
       className={classes.root}

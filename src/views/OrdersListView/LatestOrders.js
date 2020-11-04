@@ -104,23 +104,24 @@ const useStyles = makeStyles(() => ({
 
 const LatestOrders = ({ className, orders, customers, ...rest }) => {
   const classes = useStyles()
-  const fetchedOrders = orders.map(order => {
-    const customer = customers.find(customer => order.customer === customer._id)
-    if (customer) {
-      return {
-        ...data[0],
-        id: order._id,
-        createdAt: Number(order.createdAt),
-        amount: Number(order.amount),
-        status: String(order.status),
-        customer: {
-          name: customer.firstName + " " + customer.lastName
-        }
-      }
-    } else {
-      return undefined
-    }
-  })
+  const fetchedOrders = []
+  // const fetchedOrders = Array(0).fill("").concat(orders).map(order => {
+  //   const customer = customers.find(customer => order.customer === customer._id)
+  //   if (customer) {
+  //     return {
+  //       ...data[0],
+  //       id: order._id,
+  //       createdAt: Number(order.createdAt),
+  //       amount: Number(order.amount),
+  //       status: String(order.status),
+  //       customer: {
+  //         name: customer.firstName + " " + customer.lastName
+  //       }
+  //     }
+  //   } else {
+  //     return undefined
+  //   }
+  // })
 
   const [limit, setLimit] = useState(10)
   const [page, setPage] = useState(0)

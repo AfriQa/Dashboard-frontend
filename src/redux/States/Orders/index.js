@@ -25,6 +25,5 @@ export const {
 
 export const fetchOrders = () => {
     const response = Fetch(FetchBody(), FETCH_TAG)
-    console.log("here", response)
     return Fetch(FetchBody(), FETCH_TAG)
 }
