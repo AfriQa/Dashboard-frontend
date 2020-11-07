@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import moment from 'moment';
+import React from 'react'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import moment from 'moment'
 import {
   Avatar,
   Box,
@@ -12,8 +12,8 @@ import {
   Divider,
   Typography,
   makeStyles
-} from '@material-ui/core';
-import "./accountView.css";
+} from '@material-ui/core'
+import "./accountView.css"
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
   city: 'Los Angeles',
@@ -21,7 +21,7 @@ const user = {
   jobTitle: 'Senior Developer',
   name: 'Katarina Smith',
   timezone: 'GTM-7'
-};
+}
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -34,11 +34,10 @@ const useStyles = makeStyles(() => ({
     width: 100,
     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
   }
-}));
+}))
 
-const Profile = ({ className, ...rest }) => {
-  const classes = useStyles();
-
+const Profile = ({ className, userInfo, ...rest }) => {
+  const classes = useStyles()
   return (
     <Card
       className={clsx(classes.root, className)}
@@ -59,7 +58,7 @@ const Profile = ({ className, ...rest }) => {
             gutterBottom
             variant="h3"
           >
-            {user.name}
+            {userInfo.firstName + " " + userInfo.lastName}
           </Typography>
           <Typography
             color="textSecondary"
@@ -87,11 +86,11 @@ const Profile = ({ className, ...rest }) => {
         </Button>
       </CardActions>
     </Card>
-  );
-};
+  )
+}
 
 Profile.propTypes = {
   className: PropTypes.string
-};
+}
 
-export default Profile;
+export default Profile

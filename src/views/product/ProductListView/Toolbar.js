@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import "./products.css"
 import AddProduct from './addproduct';
 
-const Toolbar = () => {
+const Toolbar = ({ categories }) => {
   return (
     <div>
       <Box className="box">
@@ -18,7 +18,7 @@ const Toolbar = () => {
         <Button >
           Export
         </Button>
-        <AddProduct/>
+        <AddProduct categories={categories} />
       </Box>
       <div className="searchBar" >
         <TextField

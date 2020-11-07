@@ -6,12 +6,14 @@ import {
 import {
   fetchCustomers, selectFetchStatus as selectCustomerFetchStatus, selectCustomers
 } from "../../redux/States/Customers"
+import { selectProducts } from "../../redux/States/Products"
 import { connect } from "react-redux"
 import { reduxStatus } from "../../constants/reduxStatus"
 
 const Loader = ({
   fetchStatus, addStatus, fetchOrders, orders,
-  customers, fetchCustomerStatus, fetchCustomers
+  customers, fetchCustomerStatus, fetchCustomers,
+  products
 }) => {
   const [fetchLock, setFetchLock] = useState(true)
   const [addLock, setAddLock] = useState(true)
@@ -64,13 +66,13 @@ const Loader = ({
     //   quantityPurchased: Number(data.quantity_purchased)
     // })
   }
-
   return (
     <Orders
       orders={orders}
       addOrder={_addOrder}
       doneAdd={addStatus.status === reduxStatus.success && !addLock}
       customers={customers}
+      products={products}
     />
   )
 }
@@ -80,6 +82,7 @@ const mapStateToProps = state => ({
   fetchStatus: selectFetchStatus(state),
   addStatus: selectAddStatus(state),
   customers: selectCustomers(state),
+  products: selectProducts(state),
   fetchCustomerStatus: selectCustomerFetchStatus(state)
 })
 

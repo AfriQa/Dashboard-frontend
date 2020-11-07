@@ -3,15 +3,15 @@ import { Navigate } from 'react-router-dom';
 import pageRoutes from './constants/pageRoutes'
 import DashboardLayout from './layouts/DashboardLayout';
 import MainLayout from './layouts/MainLayout';
-import AccountView from './views/account/AccountView';
+import AccountView from './views/account/AccountView/';
 import CustomerListView from './views/CustomerListView/';
-import DashboardView from './views/reports/DashboardView';
+import DashboardView from './views/reports/DashboardView/';
 import LoginView from './views/auth/Login';
 import NotFoundView from './views/errors/NotFoundView';
 import ProductListView from './views/product/ProductListView/';
 import RegisterView from './views/auth/RegisterView';
 import SettingsView from './views/settings/SettingsView';
-import OrdersListView from './views/OrdersListView/index';
+import OrdersListView from './views/OrdersListView/';
 const routes = [
   {
     path: 'app',

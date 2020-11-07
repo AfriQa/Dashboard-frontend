@@ -54,10 +54,16 @@ const Loader = ({
     }
   }, [addStatus, setAddLock, addLock])
 
+  const _addProduct = data => {
+    setAddLock(false)
+    console.log(data)
+
+  }
+
   return (
     <Products
       products={products}
-      productCategories={categories}
+      categories={categories}
     />
   )
 }

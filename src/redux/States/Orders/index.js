@@ -24,6 +24,5 @@ export const {
 } = Order.getAPIHandles()
 
 export const fetchOrders = () => {
-    const response = Fetch(FetchBody(), FETCH_TAG)
     return Fetch(FetchBody(), FETCH_TAG)
 }

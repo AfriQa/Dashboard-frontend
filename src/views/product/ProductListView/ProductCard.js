@@ -49,10 +49,6 @@ const ProductCard = ({ className, product, ...rest }) => {
             alt="Product"
             src={product.media}
             variant="square"
-          /><Avatar mr={3}
-            alt="Product"
-            src={product.media}
-            variant="square"
           />
         </Box>
         <Typography

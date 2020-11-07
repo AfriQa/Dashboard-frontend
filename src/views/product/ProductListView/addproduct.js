@@ -8,22 +8,18 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
 import { DropzoneArea } from 'material-ui-dropzone';
-import Checkbox from '@material-ui/core/Checkbox';
+// import Checkbox from '@material-ui/core/Checkbox';
 import "./products.css"
+import AddForm from "./AddForm"
 
-function Addproduct() {
-
+function Addproduct({ categories }) {
     const [open, setOpen] = React.useState(false);
-
     const handleClickOpen = () => {
         setOpen(true);
     };
-
     const handleClose = () => {
         setOpen(false);
     };
-
-
     return (
         <div>
             <Dialog size="large" open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -33,7 +29,8 @@ function Addproduct() {
                         container
                         spacing={3}
                     >
-                        <Grid
+                        <AddForm categories={categories} />
+                        {/* <Grid
                             className="inputfeilds"
                             item
                             md={8}
@@ -47,8 +44,8 @@ function Addproduct() {
                                 required
                                 fullWidth
                             />
-                        </Grid>
-                        <Grid
+                        </Grid> */}
+                        {/* <Grid
                             item
                             md={3}
                             xs={12}
@@ -176,7 +173,7 @@ function Addproduct() {
                                 rows={3}
                                 placeholder=" Enter size variants separeted by a comma "
                             />
-                        </Grid>
+                        </Grid> */}
                         <Grid
                             item
                             md={6}
@@ -186,7 +183,7 @@ function Addproduct() {
               please get the color selector component from the shemsu 
               i couldnt */}
 
-                            <Checkbox
+                            {/* <Checkbox
                                 variant="outlined"
                                 defaultChecked
                                 color="secondary"
@@ -203,7 +200,7 @@ function Addproduct() {
                                 defaultChecked
                                 color="#222222"
                                 inputProps={{ 'aria-label': 'secondary checkbox' }}
-                            />
+                            /> */}
                         </Grid>
                         <Grid
                             item
@@ -221,12 +218,12 @@ function Addproduct() {
                     </Grid>
                 </DialogContent>
                 <DialogActions className="box">
-                    <Button onClick={handleClose} color="secondary">
+                    {/* <Button onClick={handleClose} color="secondary">
                         Cancel
           </Button>
                     <Button onClick={handleClose} variant="contained" color="secondary" className="box">
                         Add Product
-          </Button>
+          </Button> */}
                 </DialogActions>
             </Dialog>
 

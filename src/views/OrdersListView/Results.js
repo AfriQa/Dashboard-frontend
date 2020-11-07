@@ -2,7 +2,7 @@ import React from 'react';
 
 import LatestOrders from './LatestOrders'
 
-const Results = ({ orders, customers }) => {
+const Results = ({ orders, customers, products }) => {
   // const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   // const [limit, setLimit] = useState(10);
   // const [page, setPage] = useState(0);
@@ -52,7 +52,7 @@ const Results = ({ orders, customers }) => {
 
 
   return (
-    <LatestOrders orders={orders} customers={customers} />
+    <LatestOrders orders={orders} customers={customers} products={products} />
   );
 };
 

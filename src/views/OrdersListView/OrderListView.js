@@ -8,9 +8,8 @@ import Toolbar from './Toolbar';
 // import data from './data';
 import './orders.css'
 
-const OrdersListView = ({ orders, customers }) => {
-  // const [customers] = useState(data);
-
+const OrdersListView = ({ orders, customers, products }) => {
+  // const [customers] = useState(data);)
   return (
     <Page
     className="indexRoot"
@@ -19,7 +18,7 @@ const OrdersListView = ({ orders, customers }) => {
       <Container maxWidth={false}>
         <Toolbar />
         <Box mt={3}>
-          <Results orders={orders} customers={customers} />
+          <Results orders={orders} customers={customers} products={products} />
         </Box>
       </Container>
     </Page>

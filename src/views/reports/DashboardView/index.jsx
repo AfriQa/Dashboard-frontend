@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react"
-import Customers from "./CustomerList"
+import Dashboard from "./DashboardView"
 import {
   fetchCustomers,
   selectCustomers,
   selectFetchStatus,
   selectAddStatus,
   addCustomer,
-} from "../../redux/States/Customers"
-import { selectOrders } from "../../redux/States/Orders"
-import { selectProducts } from "../../redux/States/Products"
+} from "../../../redux/States/Customers"
+import { selectOrders } from "../../../redux/States/Orders"
+import { selectProducts } from "../../../redux/States/Products"
 import { connect } from "react-redux"
-import { reduxStatus } from "../../constants/reduxStatus"
-import { reverse } from "../../helpers/reverse"
+import { reduxStatus } from "../../../constants/reduxStatus"
+import { reverse } from "../../../helpers/reverse"
 
 const Loader = ({
   fetchStatus,
@@ -59,7 +59,7 @@ const Loader = ({
   }
 
   return (
-    <Customers
+    <Dashboard
       customers={reverse(customers)}
       orders={orders}
       addCustomer={_addCustomer}

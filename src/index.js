@@ -10,15 +10,18 @@ import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 import { save, load } from "redux-localstorage-simple"
 import { createStore, applyMiddleware } from "redux"
+// import { composeWithDevTools } from "redux-devtools-extension"
 import 'bootstrap/dist/css/bootstrap.css'
+import Autoload from "./autoload"
 
 export const store = createStore(
   reducer,
+  load(),
+  applyMiddleware(thunk, save(), logger({ destination: "console" }), api)
   // applyMiddleware(thunk, logger({ destination: "console" }), api)
-  // load(),
-  // applyMiddleware(thunk, save(), logger({ destination: "console" }), api)
-  applyMiddleware(thunk, logger({ destination: "console" }), api)
 )
+
+store.dispatch(Autoload())
 
 ReactDOM.render((
   <Provider store={store}>
@@ -28,4 +31,4 @@ ReactDOM.render((
   </Provider>
 ), document.getElementById('root'))
 
-serviceWorker.register()
+serviceWorker.unregister()

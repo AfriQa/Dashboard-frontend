@@ -1,15 +1,9 @@
-import React, { useState } from 'react';
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Divider,
-  Grid,
-  TextField
-} from '@material-ui/core';
-import "./accountView.css";
+import React, { useState } from 'react'
+import { Box, Button, Card, CardContent, CardHeader, Divider, Grid, TextField } from '@material-ui/core'
+import { Form } from "reactstrap"
+import "./accountView.css"
+import ParentForm from "../../common/form"
+import Joi from "joi-browser"
 const states = [
   {
     value: 'alabama',
@@ -23,10 +17,91 @@ const states = [
     value: 'san-francisco',
     label: 'San Francisco'
   }
-];
+]
+
+class ProfileUpdate extends ParentForm  {
+  constructor() {
+    super()
+    this.initialState = {
+      data: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        city: "",
+        country: "",
+        shopName: "",
+        shopCategory: "",
+      },
+      lockUpdate: false,
+      errors: {}
+    }
+    this.schema = {
+      firstName: Joi.string().required().label("First Name"),
+      lastName: Joi.string().required().label("Last Name"),
+      email: Joi.string().required().label("Email"),
+      phoneNumber: Joi.string().required().label("Phone Number"),
+      city: Joi.string().required().label("City"),
+      country: Joi.string().required().label("Country"),
+      shopName: Joi.string().required().label("Shop Name"),
+      shopCategory: Joi.string().required().label("Shop Category"),
+    }
+    this.state = this.initialState
+  }
+
+  componentDidUpdate() {
+    if (this.props.doneAdd) {
+      this.resetForm()
+    }
+  }
+
+  doSubmit() {
+    this.props.submit(this.state.data)
+  }
+
+  render() {
+    return (
+      <Form onSubmit={this.handleSubmit}>
+        {this.renderInput({
+          name: "firstName",
+          label: "First Name",
+        })}
+        {this.renderInput({
+          name: "lastName",
+          label: "Last Name",
+        })}
+        {this.renderInput({
+          name: "email",
+          label: "Email",
+        })}
+        {this.renderInput({
+          name: "phoneNumber",
+          label: "Phone Number"
+        })}
+        {this.renderInput({
+          name: "country",
+          label: "Country",
+        })}
+        {this.renderInput({
+          name: "city",
+          label: "City"
+        })}
+        {this.renderInput({
+          name: "shopName",
+          label: "Shop Name"
+        })}
+        {this.renderInput({
+          name: "shopCategory",
+          label: "Shop Category"
+        })}
+        {this.renderButton("Update Details")}
+      </Form>
+    )
+  }
+}
 
 
-const ProfileDetails = ({ ...rest }) => {
+const ProfileDetails = ({ editUserInfo, doneEdit, ...rest }) => {
   const [values, setValues] = useState({
     firstName: 'Katarina',
     lastName: 'Smith',
@@ -35,14 +110,15 @@ const ProfileDetails = ({ ...rest }) => {
     state: 'Alabama',
     country: 'USA',
     shopname: 'some shop name '
-  });
+  })
+  console.log(doneEdit)
 
   const handleChange = (event) => {
     setValues({
       ...values,
       [event.target.name]: event.target.value
-    });
-  };
+    })
+  }
 
   return (
     <form
@@ -55,7 +131,7 @@ const ProfileDetails = ({ ...rest }) => {
           title="Profile"
         />
         <Divider />
-        <CardContent>
+        {/* <CardContent>
           <Grid
             container
             spacing={3}
@@ -206,21 +282,24 @@ const ProfileDetails = ({ ...rest }) => {
               />
             </Grid>
           </Grid>
+        </CardContent> */}
+        <CardContent>
+          <ProfileUpdate submit={editUserInfo} doneEdit={doneEdit} />
         </CardContent>
         <Divider />
         <Box
           className="submitButton"
         >
-          <Button
+          {/* <Button
             color="secondary"
             variant="contained"
           >
             Update details
-          </Button>
+          </Button> */}
         </Box>
       </Card>
     </form>
-  );
-};
+  )
+}
 
-export default ProfileDetails;
+export default ProfileDetails

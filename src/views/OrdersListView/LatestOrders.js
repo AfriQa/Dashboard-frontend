@@ -18,6 +18,8 @@ import TableRow from '@material-ui/core/TableRow'
 import TablePagination from '@material-ui/core/TablePagination'
 // import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import CustomerDetails from '../CustomerListView/customerDetails'
+import { parseString } from "../../helpers/dateHelpers"
+
 const data = [
   {
     id: uuid(),
@@ -102,26 +104,24 @@ const useStyles = makeStyles(() => ({
   }
 }))
 
-const LatestOrders = ({ className, orders, customers, ...rest }) => {
+const LatestOrders = ({ className, orders, customers, products, ...rest }) => {
   const classes = useStyles()
-  const fetchedOrders = []
-  // const fetchedOrders = Array(0).fill("").concat(orders).map(order => {
-  //   const customer = customers.find(customer => order.customer === customer._id)
-  //   if (customer) {
-  //     return {
-  //       ...data[0],
-  //       id: order._id,
-  //       createdAt: Number(order.createdAt),
-  //       amount: Number(order.amount),
-  //       status: String(order.status),
-  //       customer: {
-  //         name: customer.firstName + " " + customer.lastName
-  //       }
-  //     }
-  //   } else {
-  //     return undefined
-  //   }
-  // })
+  const fetchedOrders = Array(0).fill("").concat(orders).map(order => {
+    const customer = customers.find(customer => order.customer === customer._id)
+    if (customer) {
+      return {
+        ...data[0],
+        id: order._id,
+        createdAt: Number(order.createdAt),
+        amount: Number(order.amount),
+        status: String(order.status),
+        customer: {
+          name: customer.firstName + " " + customer.lastName,
+          ...customer
+        }
+      }
+    }
+  })
 
   const [limit, setLimit] = useState(10)
   const [page, setPage] = useState(0)
@@ -134,6 +134,22 @@ const LatestOrders = ({ className, orders, customers, ...rest }) => {
     setPage(newPage)
   }
 
+  const _products = Array(orders.length).fill([])
+  orders.forEach(order => ({
+    ...order,
+    products: Array(order.items.length).fill(order).map(order => {
+      order.items.forEach((ID, idx) => {
+        const index = products.findIndex(product => product._id === ID)
+        if (index >= 0) {
+          if (products[index].productName) {
+            _products[idx].push({ name: products[index].productName, price: products[index].productPrice })
+          }
+        }
+      })
+    })
+  }))
+
+  const filteredOrders = fetchedOrders.map((order, idx) => ({ ...order, products: _products[idx] }))
   return (
     <Card
       className={clsx(classes.root, className)}
@@ -177,7 +193,7 @@ const LatestOrders = ({ className, orders, customers, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {fetchedOrders[0] && fetchedOrders.map((order) => (
+              {filteredOrders[0] && filteredOrders.map((order, idx) => (
                 <TableRow
                   hover
                   key={order._id}
@@ -189,7 +205,7 @@ const LatestOrders = ({ className, orders, customers, ...rest }) => {
                     {order.customer.name}
                   </TableCell>
                   <TableCell>
-                    {order.items}
+                    {parseString(order.products)}
                   </TableCell>
                   <TableCell>
                     {moment(order.createdAt).format('DD/MM/YYYY')}
@@ -198,7 +214,7 @@ const LatestOrders = ({ className, orders, customers, ...rest }) => {
                     {order.status}
                   </TableCell>
                   <TableCell>
-                    <CustomerDetails/>
+                    <CustomerDetails customer={filteredOrders[idx].customer} orders={filteredOrders} />
                   </TableCell>
                 </TableRow>
               ))}
@@ -206,20 +222,17 @@ const LatestOrders = ({ className, orders, customers, ...rest }) => {
           </Table>
         </Box>
       </PerfectScrollbar>
-
         <TablePagination
-      component="div"
-      count={data.length}
-      onChangePage={handlePageChange}
-      onChangeRowsPerPage={handleLimitChange}
-      page={page}
-      rowsPerPage={limit}
-      rowsPerPageOptions={[5, 10, 25]}
-    />
+          component="div"
+          count={data.length}
+          onChangePage={handlePageChange}
+          onChangeRowsPerPage={handleLimitChange}
+          page={page}
+          rowsPerPage={limit}
+          rowsPerPageOptions={[5, 10, 25]}
+        />
     </Card>
   )
 }
-
-
 
 export default LatestOrders

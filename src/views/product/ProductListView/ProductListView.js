@@ -16,7 +16,8 @@ const ProductList = ({ products, categories }) => {
     id: product._id,
     createdAt: getDateFormat(product.createdAt),
     title: product.productName,
-    description: product.productDescription
+    description: product.productDescription,
+    media: product.productImages[0]
   }))
 
   return (
@@ -25,7 +26,7 @@ const ProductList = ({ products, categories }) => {
       title="Products"
     >
       <Container maxWidth={false}>
-        <Toolbar />
+        <Toolbar categories={categories} />
         <Box mt={3}>
           <Grid
             container

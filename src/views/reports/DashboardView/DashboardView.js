@@ -24,9 +24,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Dashboard = () => {
-  const classes = useStyles();
-  console.log("Here")
+const Dashboard = ({ customers, orders, products }) => {
+  const classes = useStyles()
   return (
     <Page
       className={classes.root}
@@ -107,7 +106,7 @@ const Dashboard = () => {
             xl={9}
             xs={12}
           >
-            <LatestOrders />
+            <LatestOrders orders={orders} customers={customers} products={products} />
           </Grid>
         </Grid>
       </Container>
