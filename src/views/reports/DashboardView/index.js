@@ -10,8 +10,8 @@ import Budget from './Budget';
 import LatestOrders from '../../OrdersListView/LatestOrders';
 import LatestProducts from './LatestProducts';
 import Sales from './Sales';
-import TasksProgress from './TasksProgress';
-import TotalCustomers from './TotalCustomers';
+import ShopVisits from './ShopVisits';
+import TotalSales from './TotalSales';
 import TotalProfit from './TotalProfit';
 import TrafficByDevice from './TrafficByDevice';
 
@@ -35,7 +35,7 @@ const Dashboard = () => {
       <Container maxWidth={false}>
         <Grid
           container
-          spacing={3}
+          spacing={2}
         >
           <Grid
             item
@@ -53,7 +53,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <TotalCustomers />
+            <TotalSales />
           </Grid>
           <Grid
             item
@@ -62,7 +62,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            <TasksProgress />
+            <ShopVisits />
           </Grid>
           <Grid
             item

@@ -2,17 +2,13 @@ import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2';
-import {
-  Box,
-  Card,
-  CardContent,
-  CardHeader,
-  Divider,
-  Typography,
-  colors,
-  makeStyles,
-  useTheme
-} from '@material-ui/core';
+import { colors, makeStyles, useTheme } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
 import LaptopMacIcon from '@material-ui/icons/LaptopMac';
 import PhoneIcon from '@material-ui/icons/Phone';
 import TabletIcon from '@material-ui/icons/Tablet';
@@ -117,27 +113,27 @@ const TrafficByDevice = ({ className, ...rest }) => {
             title,
             value
           }) => (
-            <Box
-              key={title}
-              p={1}
-              textAlign="center"
-            >
-              <Icon color="action" />
-              <Typography
-                color="textPrimary"
-                variant="body1"
+              <Box
+                key={title}
+                p={1}
+                textAlign="center"
               >
-                {title}
-              </Typography>
-              <Typography
-                style={{ color }}
-                variant="h2"
-              >
-                {value}
+                <Icon color="action" />
+                <Typography
+                  color="textPrimary"
+                  variant="body1"
+                >
+                  {title}
+                </Typography>
+                <Typography
+                  style={{ color }}
+                  variant="h2"
+                >
+                  {value}
                 %
               </Typography>
-            </Box>
-          ))}
+              </Box>
+            ))}
         </Box>
       </CardContent>
     </Card>
