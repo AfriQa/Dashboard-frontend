@@ -48,12 +48,16 @@ const AuthSlice = createSlice({
         failureVerify(state, action) {
             state.verifyStatus = STATE_ERR(action.payload)
         },
+
+        logout(state, _) {
+            state.isAuthenticated = false
+        }
     }
 })
 
 export const {
     requestSendText, successSendText, failureSendText,
-    requestVerify, successVerify, failureVerify
+    requestVerify, successVerify, failureVerify, logout
 } = AuthSlice.actions
 
 export default AuthSlice.reducer
