@@ -1,13 +1,11 @@
 import React , { PureComponent }  from 'react';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import { makeStyles, colors } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
-import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';

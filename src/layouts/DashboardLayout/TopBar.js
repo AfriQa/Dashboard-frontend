@@ -45,7 +45,8 @@ const useStyles = makeStyles(() => ({
     position:'relative',
     display: 'flex',
     margin: 10,
-    width: 50,
+    height:70,
+    width: 70,
 
   }
 }));
