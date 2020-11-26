@@ -1,0 +1,25 @@
+.root {
+    display: flex;
+    height: 90px;
+    margin-top: 0;
+    border-radius: 15px;
+    filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.4));
+
+  }
+  .avatar {
+    width: 60;
+    height: 60;
+  }
+
+  .h1 {
+    display: flex;
+    align: center;
+    margin: 20;
+    font-family: Open-Sans;
+    font-style: normal;
+    font-Weight: 200;
+    font-size: 61px;
+    line-height: 83px;
+
+    color:#ffffff;
+  }
