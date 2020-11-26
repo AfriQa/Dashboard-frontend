@@ -11,7 +11,6 @@ import DeliveryProgress from "./DeliveryProgress";
 import "./deliver.css";
 
 export default class Deliverylists extends Component {
-
   state = {
     isOrdered: false,
   };
@@ -48,7 +47,6 @@ export default class Deliverylists extends Component {
               <DeliveryProgress />
             </AccordionDetails>
           </Accordion>
-          {/* <button onClick={this.handleHide}>Hide</button> */}
         </div>
       );
     } else {

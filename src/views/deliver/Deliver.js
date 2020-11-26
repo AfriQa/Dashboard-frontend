@@ -6,10 +6,9 @@ import { Icon } from "leaflet";
 import * as mapData from "./data/skateboard-parks.json";
 
 export const icon = new Icon({
-         //  iconUrl: "/afriGreen.png",
-         iconUrl: require("./afriGreen.png"),
-         iconSize: [30, 40],
-       });
+  iconUrl: require("./afriGreen.png"),
+  iconSize: [30, 40],
+});
 
 export default function Deliver() {
   const [activePark, setActivePark] = React.useState(null);
@@ -18,9 +17,7 @@ export default function Deliver() {
     <Card>
       <div>
         <MapContainer center={[8.9806, 38.7578]} zoom={12}>
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
           {mapData.features.map((park) => (
             <Marker

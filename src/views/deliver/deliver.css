@@ -11,19 +11,18 @@
 .chip {
     margin: 15px,
   }
-/* 
-  heading: {
- 
-  },
 
+  .rootProgress{
+      width: 100%;
+  }
 
-  button: {
-    marginTop: theme.spacing(1),
-    marginRight: theme.spacing(1),
-  },
-  actionsContainer: {
-    marginBottom: theme.spacing(2),
-  },
-  resetContainer: {
-    padding: theme.spacing(3),
-  }, */
+  .button {
+    margin-top:10px ;
+    margin-right: 10px,
+  }
+  .actionsContainer{
+      margin-bottom: 20px;
+  }
+  .resetContainer{
+      padding: 30px;
+  }
