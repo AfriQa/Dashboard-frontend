@@ -3,12 +3,13 @@ import Card from "@material-ui/core/Card";
 
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
-import * as parkData from "./data/skateboard-parks.json";
+import * as mapData from "./data/skateboard-parks.json";
 
 export const icon = new Icon({
-  iconUrl: "/skateboarding.svg",
-  iconSize: [25, 25],
-});
+         //  iconUrl: "/afriGreen.png",
+         iconUrl: require("./afriGreen.png"),
+         iconSize: [30, 40],
+       });
 
 export default function Deliver() {
   const [activePark, setActivePark] = React.useState(null);
@@ -16,18 +17,17 @@ export default function Deliver() {
   return (
     <Card>
       <div>
-        <MapContainer center={[45.4, -75.7]} zoom={12}>
+        <MapContainer center={[8.9806, 38.7578]} zoom={12}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
 
-          {parkData.features.map((park) => (
+          {mapData.features.map((park) => (
             <Marker
               key={park.properties.PARK_ID}
               position={[
-                park.geometry.coordinates[1],
                 park.geometry.coordinates[0],
+                park.geometry.coordinates[1],
               ]}
               onClick={() => {
                 setActivePark(park);
