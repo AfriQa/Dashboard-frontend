@@ -7,9 +7,11 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import MoneyIcon from '@material-ui/icons/Money';
+import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+
 
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
@@ -19,25 +21,25 @@ import {
 
 const data = [
   {
-    name: 'JAN', uv: 4000, pv: 2400, amt: 2400,
+    name: 'JAN', uv: 500, pv: 2400, amt: 2400,
   },
   {
-    name: 'FEB', uv: 3000, pv: 1398, amt: 2210,
+    name: 'FEB', uv: 1200, pv: 1398, amt: 2210,
   },
   {
-    name: 'MAR', uv: 2000, pv: 9800, amt: 2290,
+    name: 'MAR', uv: 1900, pv: 9800, amt: 2290,
   },
   {
-    name: 'APR', uv: 2780, pv: 3908, amt: 2000,
+    name: 'APR', uv: 2380, pv: 3908, amt: 2000,
   },
   {
-    name: 'MAY', uv: 1890, pv: 4800, amt: 2181,
+    name: 'MAY', uv: 3490, pv: 4800, amt: 2181,
   },
   {
-    name: 'JUN', uv: 2390, pv: 3800, amt: 2500,
+    name: 'JUN', uv: 3690, pv: 3800, amt: 2500,
   },
   {
-    name: 'JUL', uv: 1590, pv: 4300, amt: 2100,
+    name: 'JUL', uv: 3990, pv: 4300, amt: 2100,
   },
 ];
               
@@ -56,38 +58,35 @@ class Chart extends PureComponent {
     >
       <CartesianGrid strokeDasharray="3 7" />
       <XAxis dataKey="name" />
-      
       <YAxis />
       <Tooltip />
-      <Area type="number" dataKey="uv" stroke="#8884d8" fill="#e53935" />
+      <Area type="number" dataKey="uv" stroke="#8884d8" fill="#fb8c00" />
     </AreaChart>
     );
   }
 }
 
-const useStyles = makeStyles((theme) => ({
+
+
+const useStyles = makeStyles(() => ({
   root: {
     height: '500px',
     borderRadius: '15px',
     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))'
   },
   avatar: {
-    backgroundColor: colors.red[600],
+    backgroundColor: colors.orange[600],
     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
     height: 56,
     width: 56
   },
   differenceIcon: {
-    color: colors.red[900],
+    color: colors.green[900],
 
   },
-  differenceValue: {
-    color: colors.red[900],
-    marginRight: theme.spacing(1)
-  }
 }));
 
-const Budget = ({ className, ...rest }) => {
+const ShopVisits = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -107,28 +106,34 @@ const Budget = ({ className, ...rest }) => {
               gutterBottom
               variant="h6"
             >
-              BUDGET
+              SHOP VISITS
             </Typography>
             <Typography
               color="textPrimary"
               variant="h3"
             >
-              $24,000
+              75.5%
             </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <MoneyIcon />
+              <InsertChartIcon />
             </Avatar>
           </Grid>
         </Grid>
-        
+
+        {/* <Box mt={3}>
+          <LinearProgress
+            value={75.5}
+            variant="determinate"
+          />
+        </Box> */}
         <Box
           mt={2}
           display="flex"
           alignItems="center"
         >
-          <ArrowDownwardIcon className={classes.differenceIcon} />
+          <ArrowUpwardIcon className={classes.differenceIcon} />
           <Typography
             className={classes.differenceValue}
             variant="body2"
@@ -142,15 +147,12 @@ const Budget = ({ className, ...rest }) => {
             Since last month
           </Typography>
         </Box>
-      
       </CardContent>
       <Chart/>
     </Card>
   );
 };
 
-Budget.propTypes = {
-  className: PropTypes.string
-};
 
-export default Budget;
+
+export default ShopVisits;

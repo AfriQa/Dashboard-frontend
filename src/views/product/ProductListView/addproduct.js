@@ -216,6 +216,7 @@ function Addproduct() {
                                 filesLimit="5"
                                 style={{ margin: 10 }}
                                 onChange={(files) => console.log('Files:', files)}
+                                
                             />
                         </Grid>
                     </Grid>
