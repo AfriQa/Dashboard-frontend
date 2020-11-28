@@ -1,18 +1,14 @@
-import React , { PureComponent }  from 'react';
-
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from "react";
 import { colors, makeStyles } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-
+import Typography from "@material-ui/core/Typography";
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import PeopleIcon from '@material-ui/icons/PeopleOutlined';
-
+import "./dash.css";
 
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
@@ -68,52 +64,33 @@ class Chart extends PureComponent {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    height: '500px',
-    borderRadius: '15px',
-    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))'
-  },
   avatar: {
     backgroundColor: colors.green[600],
-    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))',
+    filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))",
     height: 56,
-    width: 56
+    width: 56,
   },
   differenceIcon: {
-    color: colors.green[900]
+    color: colors.green[900],
   },
   differenceValue: {
     color: colors.green[900],
-    marginRight: theme.spacing(1)
-  }
+    marginRight: theme.spacing(1),
+  },
 }));
 
-const TotalCustomers = ({ className, ...rest }) => {
+const TotalCustomers = () => {
   const classes = useStyles();
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className="shopvisitsRoot">
       <CardContent>
-        <Grid
-          container
-          justify="space-between"
-          spacing={3}
-        >
+        <Grid container justify="space-between" spacing={3}>
           <Grid item>
-            <Typography
-              color="textSecondary"
-              gutterBottom
-              variant="h6"
-            >
+            <Typography color="textSecondary" gutterBottom variant="h6">
               TOTAL SALES
             </Typography>
-            <Typography
-              color="textPrimary"
-              variant="h3"
-            >
+            <Typography color="textPrimary" variant="h3">
               1,600
             </Typography>
           </Grid>
@@ -123,33 +100,21 @@ const TotalCustomers = ({ className, ...rest }) => {
             </Avatar>
           </Grid>
         </Grid>
-        <Box
-          mt={2}
-          display="flex"
-          alignItems="center"
-        >
+        <Box mt={2} display="flex" alignItems="center">
           <ArrowUpwardIcon className={classes.differenceIcon} />
-          <Typography
-            className={classes.differenceValue}
-            variant="body2"
-          >
+          <Typography className={classes.differenceValue} variant="body2">
             16%
           </Typography>
-          <Typography
-            color="textSecondary"
-            variant="caption"
-          >
+          <Typography color="textSecondary" variant="caption">
             Since last month
           </Typography>
         </Box>
       </CardContent>
-      <Chart/>
+      <Chart />
     </Card>
   );
 };
 
-TotalCustomers.propTypes = {
-  className: PropTypes.string
-};
+
 
 export default TotalCustomers;

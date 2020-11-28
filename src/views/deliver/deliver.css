@@ -1,0 +1,28 @@
+.root {
+    width: 100%;
+    margin: 10px;
+    border-radius: 15px;
+    filter:drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4)) ;
+}
+.heading{
+    font-size: 15px;
+    font-weight: inherit;
+}
+.chip {
+    margin: 15px,
+  }
+
+  .rootProgress{
+      width: 100%;
+  }
+
+  .button {
+    margin-top:10px ;
+    margin-right: 10px,
+  }
+  .actionsContainer{
+      margin-bottom: 20px;
+  }
+  .resetContainer{
+      padding: 30px;
+  }

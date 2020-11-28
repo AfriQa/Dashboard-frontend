@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import {
   AppBar,
   Badge,
@@ -15,7 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
 import Logo from '../../components/Logo';
-
+// import "dashboard.css"
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -25,27 +24,25 @@ const useStyles = makeStyles(() => ({
     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4))'
 
   },
-  avatar: {
-    width: 60,
-    height: 60
-  },
+
   h1: {
     display: 'flex',
     align: 'center',
-    margin: 20,
+    margin: 0,
     fontFamily: 'Open Sans',
     fontStyle: 'normal',
     fontWeight: '200',
     fontSize: '61px',
     lineHeight: '83px',
 
-    color: '#000000'
+    color: '#222222'
   },
   logoIcon: {
     position:'relative',
     display: 'flex',
     margin: 10,
-    width: 50,
+    height:70,
+    width: 70,
 
   }
 }));
@@ -73,14 +70,14 @@ const TopBar = ({
         </div>
 
 
-        <h1 className={classes.h1}  >AfriEqa</h1>
+        <h1 className={classes.h1}  >AfriEQA</h1> 
         <Box flexGrow={1} />
         <Hidden mdDown>
 
           <IconButton color="inherit">
             <Badge
               badgeContent={notifications.length}
-              color="primary"
+              color="secondary"
               variant="dot"
             >
               <NotificationsIcon />
@@ -104,9 +101,5 @@ const TopBar = ({
   );
 };
 
-TopBar.propTypes = {
-  className: PropTypes.string,
-  onMobileNavOpen: PropTypes.func
-};
 
 export default TopBar;

@@ -19,6 +19,8 @@ import {
   Settings as SettingsIcon,
   ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
+  MapPin as MapPinIcon,
+  // ShoppingCart as ShoppingCartIcon,
   Users as UsersIcon,
   Archive as ArchiveIcon
 } from 'react-feather';
@@ -34,7 +36,7 @@ const items = [
   {
     href: '/app/dashboard',
     icon: BarChartIcon,
-    title: 'Dashboard'
+    title: 'Analytics'
   },
   {
     href: '/app/customers',
@@ -55,6 +57,12 @@ const items = [
     href: '/app/account',
     icon: UserIcon,
     title: 'Account'
+  },
+
+  {
+    href: '/app/deliver',
+    icon: MapPinIcon,
+    title: 'Deliver'
   },
   {
     href: '/app/settings',
