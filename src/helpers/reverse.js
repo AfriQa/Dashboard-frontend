@@ -1,0 +1,1 @@
+export const reverse = (data = []) => data.slice(0).reverse()

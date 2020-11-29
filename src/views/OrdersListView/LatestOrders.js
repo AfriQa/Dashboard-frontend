@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { v4 as uuid } from "uuid";
 import PerfectScrollbar from "react-perfect-scrollbar";
@@ -16,6 +16,11 @@ import TableRow from "@material-ui/core/TableRow";
 import TablePagination from "@material-ui/core/TablePagination";
 import CustomerDetails from "../CustomerListView/customerDetails";
 import "./orders.css";
+import { getContent } from "../../resolvers/Order/OrderState"
+import { getCustomer } from "../../resolvers/Customer/CustomerState"
+import { getProductStrings } from "../../resolvers/Product/ProductState"
+import { connect } from "react-redux"
+
 const data = [
   {
     id: uuid(),
@@ -85,8 +90,12 @@ const data = [
   },
 ];
 
-const LatestOrders = ({ className, ...rest }) => {
+const LatestOrders = ({ className, getContent, rootState }) => {
   const [orders] = useState(data);
+
+  const [content, setContent] = useState({
+    orders: [],
+  })
 
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
@@ -98,6 +107,13 @@ const LatestOrders = ({ className, ...rest }) => {
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
+
+  useEffect(() => {
+    const content = getContent()
+    setContent(content)
+
+    
+  }, [getContent])
 
   return (
     <Card className="root">
@@ -123,17 +139,17 @@ const LatestOrders = ({ className, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {orders.map((order) => (
+              {content.orders.map((order) => (
                 <TableRow hover key={order.id}>
                   <TableCell>{order.ref}</TableCell>
-                  <TableCell>{order.customer.name}</TableCell>
-                  <TableCell>{order.items}</TableCell>
+                  <TableCell>{getCustomer(rootState, order.customer).name}</TableCell>
+                  <TableCell>{getProductStrings(rootState, order.items)}</TableCell>
                   <TableCell>
                     {moment(order.createdAt).format("DD/MM/YYYY")}
                   </TableCell>
                   <TableCell>{order.status}</TableCell>
                   <TableCell>
-                    <CustomerDetails />
+                    <CustomerDetails customer={getCustomer(rootState, order.customer)}/>
                   </TableCell>
                 </TableRow>
               ))}
@@ -155,4 +171,9 @@ const LatestOrders = ({ className, ...rest }) => {
   );
 };
 
-export default LatestOrders;
+const mapStateToProps = state => ({
+  getContent: () => getContent(state),
+  rootState: state
+})
+
+export default connect(mapStateToProps)(LatestOrders);

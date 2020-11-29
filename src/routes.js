@@ -12,6 +12,7 @@ import RegisterView from './views/auth/RegisterView';
 import SettingsView from './views/settings/SettingsView';
 import OrdersListView from './views/OrdersListView/';
 import Deliver from './views/deliver/'
+
 const routes = [
   {
     path: 'app',

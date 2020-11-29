@@ -218,7 +218,11 @@ const History = ({ customer, customerOrders, rootState }) => {
   );
 };
 
-const ModalCustomer = ({ customer, rootState }) => {
+const ModalCustomer = ({ customer: fetchedCustomer, rootState }) => {
+  const customer = {
+    _id: "sdvsdv",
+    ...fetchedCustomer
+  }
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {

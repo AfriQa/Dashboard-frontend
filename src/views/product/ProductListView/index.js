@@ -10,9 +10,12 @@ import Toolbar from "./Toolbar";
 import ProductCard from "./ProductCard";
 import data from "./data";
 import "./products.css";
+import { connect } from "react-redux"
+import { selectProducts } from "../../../resolvers/Product/ProductState"
 
-const ProductList = () => {
-  const [products] = useState(data);
+const ProductList = ({ rootState }) => {
+  const [products] = useState(data)
+  const fetchedProducts = selectProducts(rootState)
 
   return (
     <Page className="indexRoot" title="Products">
@@ -20,7 +23,7 @@ const ProductList = () => {
         <Toolbar />
         <Box mt={3}>
           <Grid container spacing={3}>
-            {products.map((product) => (
+            {fetchedProducts.map((product) => (
               <Grid item key={product.id} lg={4} md={6} xs={12}>
                 <ProductCard className="productCard" product={product} />
               </Grid>
@@ -35,4 +38,6 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default connect(
+  state => ({ rootState: state })
+)(ProductList)

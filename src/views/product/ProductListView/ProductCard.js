@@ -9,14 +9,16 @@ import Grid from "@material-ui/core/Grid";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import "./products.css";
+import { getHours } from "../../../helpers/dateHelpers"
 
 const ProductCard = ({ className, product, ...rest }) => {
   return (
     <Card className="root">
       <CardContent>
         <Box display="flex" justifyContent="center" >
-          <Avatar ml={3} alt="Product" src={product.media} variant="square" />
-          <Avatar mr={3} alt="Product" src={product.media} variant="square" />
+          {product.productImages.map(image => (
+            <Avatar ml={3} alt="Product" src={image} variant="square" />
+          )).slice(0, 3)}
         </Box>
         <Typography
           align="center"
@@ -24,10 +26,10 @@ const ProductCard = ({ className, product, ...rest }) => {
           gutterBottom
           variant="h4"
         >
-          {product.title}
+          {product.productName}
         </Typography>
         <Typography align="center" color="textPrimary" variant="body1">
-          {product.description}
+          {product.productDescription}
         </Typography>
       </CardContent>
       <Box flexGrow={1} />
@@ -37,13 +39,13 @@ const ProductCard = ({ className, product, ...rest }) => {
           <Grid className="statsItem" item>
             <AccessTimeIcon color="action" />
             <Typography color="textSecondary" display="inline" variant="body2">
-              Updated 2hr ago
+              Updated {getHours(product.createdAt, product.updatedAt)} hours ago
             </Typography>
           </Grid>
           <Grid className="statsItem" item>
             <GetAppIcon color="action" />
             <Typography color="textSecondary" display="inline" variant="body2">
-              {product.totalDownloads} Items sold
+              {product.salesCount} Items sold
             </Typography>
           </Grid>
         </Grid>

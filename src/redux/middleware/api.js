@@ -27,15 +27,14 @@ const api = ({ dispatch, getState }) => (next) => async (action) => {
   try {
     const response = await axios.request({
       url,
-      method,
+      method: "POST",
       data: body,
     });
     //General
-    dispatch(actions.apiCallSuccess(response.data[tag]));
+    dispatch(actions.apiCallSuccess(response.data.data[tag]));
     //Specific
     if (onSuccess) {
-      dispatch({ type: onSuccess, payload: response.data[tag] })
-      callback({ type: onSuccess, payload: response.data[tag] })
+      dispatch({ type: onSuccess, payload: response.data.data[tag] })
     }
   } catch (error) {
     //General
@@ -46,10 +45,10 @@ const api = ({ dispatch, getState }) => (next) => async (action) => {
         error.response &&
         (error.response.status === 400 ||
           error.response.status === 403 ||
-          error.response.status === 401)
+          error.response.status === 401) ||
+          error.response.status === 404
       ) {
-        console.log(error.response.data.errors);
-        callback({ type: onFailure, payload: error.response.data.errors })
+        console.log(error.response)
         dispatch({ type: onFailure, payload: error.response.data.errors });
       } else {
         callback({ type: onFailure, payload: error.message })

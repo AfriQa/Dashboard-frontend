@@ -13,13 +13,13 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import getInitials from "../../utils/getInitials";
-import CustomerDetails from './customerDetails';
+import CustomerDetails from './CustomerBasicDetails';
+import { getCustomer } from "../../resolvers/Customer/CustomerState"
 
-const Results = ({ customers }) => {
+const Results = ({ customers, fetchedCustomers, rootState }) => {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
-
 
   const handleSelectAll = (event) => {
     let newSelectedCustomerIds;
@@ -61,115 +61,108 @@ const Results = ({ customers }) => {
     setPage(newPage);
   };
 
-
-
-
-return (
-  <Card className="resultsRoot">
-    <PerfectScrollbar>
-      <Table className="table">
-        <TableHead>
-          <TableRow>
-            <TableCell padding="checkbox">
-              <Checkbox
-                checked={selectedCustomerIds.length === customers.length}
-                color="secondary"
-                indeterminate={
-                  selectedCustomerIds.length > 0
-                  && selectedCustomerIds.length < customers.length
-                }
-                onChange={handleSelectAll}
-              />
-            </TableCell>
-            <TableCell>
-              Name
-                </TableCell>
-            <TableCell>
-              Email
-                </TableCell>
-            <TableCell>
-              Location
-                </TableCell>
-            <TableCell>
-              Phone
-                </TableCell>
-            <TableCell>
-              Registration date
-                </TableCell>
-                <TableCell>
-             More Details
-                </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {customers.slice(0, limit).map((customer) => (
-            <TableRow
-              hover
-              key={customer.id}
-              selected={selectedCustomerIds.indexOf(customer.id) !== -1}
-            >
+  return (
+    <Card className="resultsRoot">
+      <PerfectScrollbar>
+        <Table className="table">
+          <TableHead>
+            <TableRow>
               <TableCell padding="checkbox">
                 <Checkbox
-                  checked={selectedCustomerIds.indexOf(customer.id) !== -1}
-                  onChange={(event) => handleSelectOne(event, customer.id)}
-                  value="true"
+                  checked={selectedCustomerIds.length === customers.length}
+                  color="secondary"
+                  indeterminate={
+                    selectedCustomerIds.length > 0
+                    && selectedCustomerIds.length < customers.length
+                  }
+                  onChange={handleSelectAll}
                 />
               </TableCell>
               <TableCell>
-                <Box className="tableBox">
-                  <Avatar
-                    // toggle={viewCustomerDetails}
-                    // onClick={() => 
-                    //   viewCustomerDetails('openModal')}
-                    className="avatar"
-                    src={customer.avatarUrl}
-                  >
-                    {getInitials(customer.name)}
-                  </Avatar>
-                  <Typography
-                    color="textPrimary"
-                    variant="body1"
-                  >
-                    {customer.name}
-                  </Typography>
-                </Box>
-              </TableCell>
+                Name
+                </TableCell>
               <TableCell>
-                {customer.email}
-              </TableCell>
+                Email
+                </TableCell>
               <TableCell>
-                {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
-              </TableCell>
+                Location
+                </TableCell>
               <TableCell>
-                {customer.phone}
-              </TableCell>
+                Phone
+                </TableCell>
               <TableCell>
-                {moment(customer.createdAt).format('DD/MM/YYYY')}
-              </TableCell>
+                Registration date
+                </TableCell>
               <TableCell>
-
-
-               <CustomerDetails/>
-
-               
-              </TableCell>
+                More Details
+                </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {fetchedCustomers.slice(0, limit).map((customer) => (
+              <TableRow
+                hover
+                key={customer.id}
+                selected={selectedCustomerIds.indexOf(customer.id) !== -1}
+              >
+                <TableCell padding="checkbox">
+                  <Checkbox
+                    checked={selectedCustomerIds.indexOf(customer.id) !== -1}
+                    onChange={(event) => handleSelectOne(event, customer.id)}
+                    value="true"
+                  />
+                </TableCell>
+                <TableCell>
+                  <Box className="tableBox">
+                    <Avatar
+                      // toggle={viewCustomerDetails}
+                      // onClick={() => 
+                      //   viewCustomerDetails('openModal')}
+                      className="avatar"
+                      src={customer.name}
+                    >
+                      {getInitials(customer.name)}
+                    </Avatar>
+                    <Typography
+                      color="textPrimary"
+                      variant="body1"
+                    >
+                      {customer.firstName + " " + customer.lastName}
+                    </Typography>
+                  </Box>
+                </TableCell>
+                <TableCell>
+                  {customer.email}
+                </TableCell>
+                <TableCell>
+                  {/* {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`} */}
+                </TableCell>
+                <TableCell>
+                  {customer.phoneNumber}
+                </TableCell>
+                <TableCell>
+                  {moment(Number(customer.createdAt)).format('DD/MM/YYYY')}
+                </TableCell>
+                <TableCell>
+                  <CustomerDetails customer={getCustomer(rootState, customer._id)} />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
 
-    </PerfectScrollbar>
-    <TablePagination
-      component="div"
-      count={customers.length}
-      onChangePage={handlePageChange}
-      onChangeRowsPerPage={handleLimitChange}
-      page={page}
-      rowsPerPage={limit}
-      rowsPerPageOptions={[5, 10, 25]}
-    />
-  </Card>
-);
+      </PerfectScrollbar>
+      <TablePagination
+        component="div"
+        count={customers.length}
+        onChangePage={handlePageChange}
+        onChangeRowsPerPage={handleLimitChange}
+        page={page}
+        rowsPerPage={limit}
+        rowsPerPageOptions={[5, 10, 25]}
+      />
+    </Card>
+  );
 };
 
 

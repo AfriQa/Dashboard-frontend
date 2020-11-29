@@ -9,8 +9,6 @@ import data from './data';
 import './customer.css'
 
 const CustomerListView = () => {
-  const [customers] = useState(data);
-
   return (
     <Page
     className="indexRoot"
@@ -19,11 +17,11 @@ const CustomerListView = () => {
       <Container maxWidth={false}>
         <Toolbar />
         <Box mt={3}>
-          <Results customers={customers} />
+          <Results customer={data} />
         </Box>
       </Container>
     </Page>
   );
 };
 
-export default CustomerListView;
+export default CustomerListView
