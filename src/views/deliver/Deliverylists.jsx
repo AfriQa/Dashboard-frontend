@@ -12,22 +12,24 @@ import "./deliver.css";
 
 export default class Deliverylists extends Component {
   state = {
-    isOrdered: false,
+    isAccepted: Boolean(this.props.isAccepted)
   };
 
   handleAcceptedOrder = () => {
+    this.props.acceptOrder()
     this.setState({
-      isOrdered: true,
+      isAccepted: true,
     });
   };
 
   handleHide = () => {
     this.setState({
-      isOrdered: false,
+      isAccepted: false,
     });
   };
   render() {
-    if (this.state.isOrdered) {
+    const { itemString, totalPrice, customer, order } = this.props
+    if (this.props.isAccepted) {
       return (
         <div className="root">
           <Accordion>
@@ -39,12 +41,17 @@ export default class Deliverylists extends Component {
               <Typography className="heading">
                 {" "}
                 <strong>
-                  <h1> 5 kg sugar to "Customer Name "</h1>
+                  <h1>{itemString} ({totalPrice})</h1>{" "}
                 </strong>
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <DeliveryProgress />
+              <DeliveryProgress
+                order={order} customer={customer}
+                pickOrder={this.props.pickOrder}
+                arriveOrder={this.props.arriveOrder}
+                payOrder={this.props.payOrder}
+              />
             </AccordionDetails>
           </Accordion>
         </div>
@@ -62,7 +69,7 @@ export default class Deliverylists extends Component {
                 <Typography>
                   {" "}
                   <strong>
-                    <h1> 5 Kg, Sugar ( 50-ETB) </h1>{" "}
+                    <h1>{itemString} ({totalPrice})</h1>{" "}
                   </strong>{" "}
                 </Typography>
               </div>
@@ -83,12 +90,12 @@ export default class Deliverylists extends Component {
                       variant="outlined"
                       color="secondary"
                       size="xl"
-                      label="This Person Name "
+                      label={customer.fullName}
                       avatar={
                         <Avatar src="/static/images/avatars/avatar_6.png'" />
                       }
                     >
-                      this person Name
+                      {customer.fullName}
                     </Chip>
                   </Grid>
                   <br />
@@ -96,21 +103,21 @@ export default class Deliverylists extends Component {
                 <Typography>
                   <Grid className="chip">
                     From :{" "}
-                    <Chip label="starting LOcation name" variant="outlined" />
+                    <Chip label={order.orderInfo.address.from} variant="outlined" />
                     {"   "} To :{" "}
                     <Chip
-                      label=" destination LOcation name"
+                      label={order.orderInfo.address.from}
                       variant="outlined"
                     />
                     {"   "} Total Distance :{" "}
-                    <Chip label=" 20 km" variant="outlined" />
+                    <Chip label={order.orderInfo.totalDistance} variant="outlined" />
                   </Grid>
                   <br />
                   <Grid className="chip">
                     {"   "} Orderd :{" "}
-                    <Chip label="2 min ago " variant="outlined" />
+                    <Chip label={order.orderInfo.orderedTime} variant="outlined" />
                     {"   "} Estimated Delivery time :{" "}
-                    <Chip label=" 30 min " variant="outlined" />
+                    <Chip label={order.orderInfo.estimatedDeliveryTime} variant="outlined" />
                   </Grid>
                 </Typography>
               </Grid>

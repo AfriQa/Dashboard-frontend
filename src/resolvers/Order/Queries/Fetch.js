@@ -15,6 +15,7 @@ export const FetchBody = () => ({
             to
           }
           totalDistance
+          deliveryPerson
           orderedTime
           estimatedDeliveryTime
         }

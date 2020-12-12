@@ -11,7 +11,7 @@ import ProductListView from './views/product/ProductListView';
 import RegisterView from './views/auth/RegisterView';
 import SettingsView from './views/settings/SettingsView';
 import OrdersListView from './views/OrdersListView/';
-import Deliver from './views/deliver/'
+import Deliver from "./views/Deliver/index.jsx"
 
 const routes = [
   {

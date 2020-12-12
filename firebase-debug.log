@@ -1,0 +1,38 @@
+[debug] [2020-12-12T02:10:15.531Z] ----------------------------------------------------------------------
+[debug] [2020-12-12T02:10:15.536Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2020-12-12T02:10:15.536Z] CLI Version:   8.11.2
+[debug] [2020-12-12T02:10:15.536Z] Platform:      darwin
+[debug] [2020-12-12T02:10:15.537Z] Node Version:  v12.18.3
+[debug] [2020-12-12T02:10:15.538Z] Time:          Sat Dec 12 2020 05:10:15 GMT+0300 (East Africa Time)
+[debug] [2020-12-12T02:10:15.538Z] ----------------------------------------------------------------------
+[debug] [2020-12-12T02:10:15.539Z] 
+[debug] [2020-12-12T02:10:15.613Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-12T02:10:15.614Z] > authorizing via signed-in user
+[debug] [2020-12-12T02:10:15.614Z] [iam] checking project afrieqa-dashboard for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-12-12T02:10:15.618Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-12-12T02:10:15.618Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-12-12T02:10:16.472Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Sat, 12 Dec 2020 02:10:16 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-12T02:10:17.057Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/afrieqa-dashboard:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-12-12T02:10:20.972Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 02:10:20 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1221","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-12T02:10:20.976Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/afrieqa-dashboard  
+ 
+[debug] [2020-12-12T02:10:21.992Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 02:10:21 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'afrieqa-dashboard'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-12-12T02:10:21.999Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/afrieqa-dashboard/versions  
+ {"config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-12-12T02:10:24.643Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 02:10:24 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[afrieqa-dashboard]: beginning deploy... 
+[info] i  hosting[afrieqa-dashboard]: found 47 files in build 
+[debug] [2020-12-12T02:10:24.708Z] [hosting] hash cache [YnVpbGQ] not populated
+[debug] [2020-12-12T02:10:26.459Z] [hosting] hash cache [YnVpbGQ] stored for 47 files
+[debug] [2020-12-12T02:10:26.459Z] [hosting][hash queue][FINAL] {"max":1723,"min":365,"avg":483.72340425531917,"active":0,"complete":47,"success":47,"errored":0,"retried":0,"total":47,"elapsed":1750}
+[debug] [2020-12-12T02:10:26.459Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/afrieqa-dashboard/versions/4e2fb4c58c81eef7:populateFiles  
+ <request body omitted>
+[debug] [2020-12-12T02:10:28.842Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 12 Dec 2020 02:10:28 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-12T02:10:28.874Z] [hosting][populate queue][FINAL] {"max":2391,"min":2391,"avg":2391,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":2417}
+[debug] [2020-12-12T02:10:28.874Z] [hosting] uploads queued: 45

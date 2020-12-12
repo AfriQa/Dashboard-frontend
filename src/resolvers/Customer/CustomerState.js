@@ -33,6 +33,7 @@ export const getCustomer = (state, id) => {
         error: content.data[index].error,
         firstName: content.data[index].firstName,
         lastName: content.data[index].lastName,
+        fullName: content.data[index].firstName + " " + content.data[index].lastName,
         phoneNumber: content.data[index].phoneNumber,
         shopCategory: content.data[index].shopCategory,
         shopName: content.data[index].shopName,

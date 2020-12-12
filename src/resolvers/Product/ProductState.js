@@ -21,6 +21,25 @@ export const getProduct = (state, id) => {
     return content.data[index]
 }
 
+export const getProductPrice = (state, id) => {
+    const content = unResolveEntity(state, stateName)
+    const index = content.data.findIndex(product => product._id === id)
+    if (index >= 0) {
+        return content.data[index].productPrice
+    } else {
+        return { name: 'Not found' }
+    }
+}
+
+export const getTotalProductPrices = (state, items = []) => {
+    let totalPrice = 0
+    items.forEach(item => {
+        const price = getProductPrice(state, item._id)
+        totalPrice += price
+    })
+    return totalPrice
+}
+
 export const getProductStrings = (state, items) => {
     let totalProductStrings = ""
     const ids = items.map(item => item._id)

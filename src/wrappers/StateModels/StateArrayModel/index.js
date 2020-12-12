@@ -29,7 +29,8 @@ export default class StateArrayModel {
         addStatus: STATE_INI,
         fetchStatus: STATE_INI,
         editStatus: STATE_INI,
-        deleteStatus: STATE_INI
+        deleteStatus: STATE_INI,
+        socketUpdateCount: 0
     }
 
     core = {
@@ -51,7 +52,8 @@ export default class StateArrayModel {
         fetch: this.requestOptions,
         add: this.requestOptions,
         edit: this.requestOptions,
-        remove: this.requestOptions
+        remove: this.requestOptions,
+        socketUpdate: this.requestOptions,
     }
 
     selectors = []
@@ -125,7 +127,10 @@ export default class StateArrayModel {
                     state.editStatus = STATE_OK
                     const index = state.data.findIndex(element => element.id === action.payload.id)
                     if (index >= 0) {
-                        state.data[index] = action.payload
+                        state.data[index] = {
+                            ...state.data[index],
+                            ...action.payload
+                        }
                     }
                 },
                 failureEdit(state, action) {
@@ -141,6 +146,16 @@ export default class StateArrayModel {
                 },
                 failureDelete(state, action) {
                     state.deleteStatus = STATE_ERR(action.payload)
+                },
+                socketUpdate(state, action) {
+                    state.socketUpdateCount = state.socketUpdateCount + 1
+                    const index = state.data.findIndex(item => item._id === action.payload._id)
+                    if (index >= 0) {
+                        state.data[index] = {
+                            ...state.data[index],
+                            ...action.payload
+                        }
+                    }
                 }
             },
             name: this.config.stateName
@@ -166,6 +181,7 @@ export default class StateArrayModel {
             selectEditStatus: this.selectEditStatus,
             selectDeleteStatus: this.selectDeleteStatus,
             selectData: this.selectData,
+            selectSocketUpdate: this.selectSocketUpdate,
         }
     }
 
@@ -191,19 +207,26 @@ export default class StateArrayModel {
         return data
     }
 
+    selectSocketUpdate = (state) => {
+        const { socketUpdateCount } = unResolveEntity(state, this.config.stateName)
+        return socketUpdateCount
+    }
+
     // Actions
     getActions = () => {
         var actions = {
             requestFetch: (state, action) => null, successFetch: (state, action) => null, failureFetch: (state, action) => null,
             requestAdd: (state, action) => null, successAdd: (state, action) => null, failureAdd: (state, action) => null,
             requestEdit: (state, action) => null, successEdit: (state, action) => null, failureEdit: (state, action) => null,
-            requestDelete: (state, action) => null, successDelete: (state, action) => null, failureDelete: (state, action) => null
+            requestDelete: (state, action) => null, successDelete: (state, action) => null, failureDelete: (state, action) => null,
+            socketUpdate: (state, action) => null,
         }
         const {
             requestFetch, successFetch, failureFetch,
             requestAdd, successAdd, failureAdd,
             requestEdit, successEdit, failureEdit,
-            requestDelete, successDelete, failureDelete
+            requestDelete, successDelete, failureDelete,
+            socketUpdate
         } = this.core.slice.actions
         actions.requestFetch = requestFetch
         actions.successFetch = successFetch
@@ -217,6 +240,7 @@ export default class StateArrayModel {
         actions.requestDelete = requestDelete
         actions.successDelete = successDelete
         actions.failureDelete = failureDelete
+        actions.socketUpdate = socketUpdate
         return actions
     }
 
@@ -312,6 +336,16 @@ export default class StateArrayModel {
         this.APIActions.remove = this.requestOptions
     }
 
+    setSocketUpdate = () => {
+        const { socketUpdate } = this.getActions()
+        this.requestOptions = {
+            ...this.requestOptions,
+            socketUpdate: socketUpdate.type
+        }
+
+        this.APIActions.socketUpdate = this.requestOptions
+    }
+
     getAPIHandles = () => {
         return {
             Add: (body, tag) => {
@@ -321,6 +355,8 @@ export default class StateArrayModel {
                     onStart: requestAdd.type,
                     onSuccess: successAdd.type,
                     onFailure: failureAdd.type,
+                    onSocketUpdate: null,
+                    socketUpdate: null
                 }
                 if (body) {
                     this.requestOptions.body = body
@@ -340,6 +376,8 @@ export default class StateArrayModel {
                     onStart: requestFetch.type,
                     onSuccess: successFetch.type,
                     onFailure: failureFetch.type,
+                    onSocketUpdate: null,
+                    socketUpdate: null
                 }
 
                 if (body) {
@@ -360,6 +398,8 @@ export default class StateArrayModel {
                     onStart: requestEdit.type,
                     onSuccess: successEdit.type,
                     onFailure: failureEdit.type,
+                    onSocketUpdate: null,
+                    socketUpdate: null
                 }
                 if (body) {
                     this.requestOptions.body = body
@@ -378,7 +418,9 @@ export default class StateArrayModel {
                     ...this.requestOptions,
                     onStart: requestDelete.type,
                     onSuccess: successDelete.type,
-                    onFailure: failureDelete.type
+                    onFailure: failureDelete.type,
+                    onSocketUpdate: null,
+                    socketUpdate: null
                 }
                 if (body) {
                     this.requestOptions.body = body
@@ -390,6 +432,18 @@ export default class StateArrayModel {
                 this.setRemove({ ...this.requestOptions })
                 return this.Remove()
             },
+            SocketUpdate: (data) => {
+                const { socketUpdate } = this.getActions()
+                this.requestOptions = {
+                    onStart: null,
+                    onSuccess: null,
+                    onFailure: null,
+                    onSocketUpdate: socketUpdate.type,
+                    payload: data
+                }
+                this.setSocketUpdate(this.requestOptions)
+                return this.SocketUpdate(this.requestOptions)
+            }
         }
     }
 
@@ -397,4 +451,5 @@ export default class StateArrayModel {
     Fetch = () => apiCallBegan(this.APIActions.fetch)
     Edit = () => apiCallBegan(this.APIActions.edit)
     Remove = () => apiCallBegan(this.APIActions.remove)
+    SocketUpdate = (options) => apiCallBegan(options)
 }
